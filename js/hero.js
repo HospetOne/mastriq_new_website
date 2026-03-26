@@ -14,7 +14,7 @@ function initHeroCarousel() {
   let autoTimer;
   const DEFAULT_DURATION = 7000;
   
-  // Clear existing dots and create new ones (only once)
+  // Create dots
   if (dotsContainer) {
     dotsContainer.innerHTML = '';
     slides.forEach((_, i) => {
