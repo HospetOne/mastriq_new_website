@@ -1,4 +1,4 @@
-/* ===== HEADER STYLES - MOBILE OPTIMIZED ===== */
+/* ===== HEADER STYLES - FULLY FIXED ===== */
 .main-header {
   position: sticky;
   top: 0;
@@ -6,7 +6,6 @@
   background: var(--bg-white);
   border-bottom: 1px solid var(--border-light);
   width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .nav-bar {
@@ -21,12 +20,11 @@
   background: var(--bg-white);
 }
 
-/* Brand Section with 3D Effect */
+/* Brand Section */
 .brand-wrap {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  position: relative;
   z-index: 1002;
 }
 
@@ -37,7 +35,6 @@
   text-decoration: none;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  transition: all 0.3s ease;
 }
 
 .brand-tagline {
@@ -46,16 +43,10 @@
   letter-spacing: 0.5px;
   white-space: nowrap;
   font-weight: 500;
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  background: linear-gradient(135deg, #00E69C, #20FFB5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: taglineGlow 2s ease-in-out infinite;
-}
-
-@keyframes taglineGlow {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
 }
 
 /* Navigation - Desktop */
@@ -102,24 +93,6 @@
   height: 2px;
   background: var(--primary);
   border-radius: 2px;
-}
-
-.nav > a::after,
-.nav-item > a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.3s ease;
-  border-radius: 2px;
-}
-
-.nav > a:hover::after,
-.nav-item > a:hover::after {
-  width: 100%;
 }
 
 /* Mega Menu Container - Desktop */
@@ -199,7 +172,6 @@
 
 .product-section {
   display: none;
-  animation: fadeIn 0.3s ease;
 }
 
 .product-section.active {
@@ -211,20 +183,6 @@
   gap: 1rem;
   overflow-x: auto;
   padding-bottom: 0.8rem;
-}
-
-.product-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.product-scroll::-webkit-scrollbar-track {
-  background: var(--border-light);
-  border-radius: 10px;
-}
-
-.product-scroll::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
 }
 
 .mega-product-item {
@@ -245,7 +203,6 @@
 .mega-product-item:hover {
   transform: translateY(-5px);
   border-color: var(--primary);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .mega-product-item img {
@@ -297,13 +254,6 @@
   color: var(--text-dark);
   padding: 0.5rem;
   transition: all 0.2s;
-  border-radius: 50%;
-}
-
-.search-toggle:hover,
-.lang-toggle:hover {
-  color: var(--primary);
-  background: var(--bg-gray);
 }
 
 .sign-in-btn {
@@ -318,11 +268,6 @@
   transition: all 0.2s;
 }
 
-.sign-in-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
 /* Menu Toggle Button - Mobile */
 .menu-toggle {
   display: none;
@@ -334,21 +279,9 @@
   padding: 0.5rem;
   order: -1;
   z-index: 1002;
-  transition: all 0.2s;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== MOBILE RESPONSIVE STYLES ===== */
+/* ===== MOBILE RESPONSIVE STYLES - FULLY FIXED ===== */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -455,7 +388,6 @@
   
   .nav-item.active .mega-menu {
     display: block;
-    animation: fadeIn 0.3s ease;
   }
   
   .mega-container {
@@ -530,7 +462,7 @@
   }
 }
 
-/* Small Mobile (up to 480px) */
+/* Small Mobile */
 @media (max-width: 480px) {
   .nav-bar {
     padding: 0.6rem 1rem;
@@ -541,28 +473,7 @@
   }
   
   .brand-tagline {
-    font-size: 0.5rem;
-    white-space: nowrap;
-  }
-  
-  .header-extras {
-    gap: 0.3rem;
-  }
-  
-  .search-toggle,
-  .lang-toggle {
-    padding: 0.3rem;
-    font-size: 0.8rem;
-  }
-  
-  .sign-in-btn {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.7rem;
-  }
-  
-  .menu-toggle {
-    font-size: 1.2rem;
-    padding: 0.3rem;
+    display: none;
   }
   
   .nav {
@@ -573,28 +484,5 @@
   .nav-item > a {
     font-size: 1rem;
     padding: 0.8rem 0;
-  }
-  
-  .category-item {
-    padding: 0.5rem;
-    font-size: 0.75rem;
-    min-width: 80px;
-  }
-  
-  .mega-product-item {
-    padding: 0.6rem;
-  }
-  
-  .mega-product-item img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .mega-product-info strong {
-    font-size: 0.75rem;
-  }
-  
-  .mega-product-info span {
-    font-size: 0.6rem;
   }
 }
