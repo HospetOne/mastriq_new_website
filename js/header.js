@@ -1,4 +1,4 @@
-// ===== HEADER FUNCTIONALITY - FIXED =====
+// ===== HEADER FUNCTIONALITY - WORKING SUBMENU =====
 (function() {
   'use strict';
   
@@ -52,68 +52,60 @@
     }
   }
   
-  // Make initHeader globally available
   window.initHeader = function() {
     console.log('initHeader called');
     
-    // Wait a bit for DOM to be fully ready
     setTimeout(() => {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav');
       
-      console.log('Searching for elements...');
-      console.log('menuToggle:', menuToggle);
-      console.log('nav:', nav);
-      
-      if (!menuToggle) {
-        console.error('Menu toggle not found!');
+      if (!menuToggle || !nav) {
+        console.error('Header elements not found!');
         return;
       }
       
-      if (!nav) {
-        console.error('Nav not found!');
-        return;
-      }
+      console.log('Elements found - initializing...');
       
-      console.log('Menu toggle found:', menuToggle);
-      console.log('Nav found:', nav);
-      
-      // Remove any existing event listeners by replacing the button
+      // Setup menu toggle click
       const newToggle = menuToggle.cloneNode(true);
       menuToggle.parentNode.replaceChild(newToggle, menuToggle);
       const finalToggle = document.querySelector('.menu-toggle');
       
-      // Add click event to new button
       finalToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Menu toggle CLICKED!');
         
         if (nav.classList.contains('open')) {
-          console.log('Closing menu');
           closeMobileMenu();
         } else {
-          console.log('Opening menu');
           createOverlay();
           openMobileMenu();
         }
       });
       
-      // Handle Products link on mobile
+      // Handle Products link on mobile - IMPORTANT for submenu
       const productsLink = document.querySelector('.nav-item > a');
       if (productsLink) {
-        productsLink.addEventListener('click', function(e) {
+        // Remove any existing listeners
+        const newProductsLink = productsLink.cloneNode(true);
+        productsLink.parentNode.replaceChild(newProductsLink, productsLink);
+        const finalProductsLink = document.querySelector('.nav-item > a');
+        
+        finalProductsLink.addEventListener('click', function(e) {
+          // Only on mobile
           if (window.innerWidth <= 768) {
             e.preventDefault();
             e.stopPropagation();
-            const parent = this.parentElement;
-            parent.classList.toggle('active');
-            console.log('Products toggled:', parent.classList.contains('active'));
+            const parentItem = this.closest('.nav-item');
+            if (parentItem) {
+              parentItem.classList.toggle('active');
+              console.log('Products toggled:', parentItem.classList.contains('active'));
+            }
           }
         });
       }
       
-      // Close menu when clicking nav links (except products)
+      // Close menu when clicking other nav links
       document.querySelectorAll('.nav > a').forEach(link => {
         link.addEventListener('click', function() {
           if (window.innerWidth <= 768 && this.getAttribute('href') !== '#') {
@@ -122,7 +114,7 @@
         });
       });
       
-      // Handle category switching
+      // Handle category switching in mega menu
       const categoryItems = document.querySelectorAll('.category-item');
       const dispensersSection = document.getElementById('dispensers-section');
       const mixersSection = document.getElementById('mixers-section');
@@ -159,20 +151,10 @@
         }, 100);
       });
       
-      // Set active menu based on current page
-      const currentPath = window.location.pathname;
-      document.querySelectorAll('.nav > a, .nav-item > a').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && href !== '#' && currentPath.includes(href)) {
-          link.classList.add('active');
-        }
-      });
-      
       console.log('Header initialized successfully');
     }, 100);
   };
   
-  // Auto-initialize if DOM is already ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       if (typeof window.initHeader === 'function') {
