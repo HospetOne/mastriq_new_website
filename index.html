@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mastriq | Technology Made Simple</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Mastriq – Advanced paint tinting machines, dispensers and automation solutions." />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/software.css">
+  <link rel="stylesheet" href="css/video-gallery.css">
+</head>
+<body>
+
+<!-- Header Component -->
+<div id="header-container"></div>
+
+<!-- Hero Section -->
+<section class="hero-carousel">
+  <div class="slides">
+    <div class="slide slide-1 active">
+      <div class="slide-content">
+        <span class="slide-badge">PAINT TINTING TECHNOLOGY</span>
+        <h1>Engineered Paint<br>Dispensing Solutions</h1>
+        <p>Advanced paint dispensers, mixers, and specialty equipment built for the coatings industry.</p>
+        <a href="#products" class="btn-primary">Explore Our Machines <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="slide slide-2">
+      <div class="slide-content">
+        <span class="slide-badge">NEW RELEASE</span>
+        <h1>M60 BEAST</h1>
+        <p>Massive Capacity, Endless Power. Engineered to dominate.</p>
+        <a href="m60-beast.html" class="btn-primary">Discover More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="slide slide-3">
+      <video autoplay muted loop playsinline class="slide-video">
+        <source src="videos/industrial.mp4" type="video/mp4">
+      </video>
+      <div class="slide-content">
+        <span class="slide-badge">AUTOMATION IN ACTION</span>
+        <h1>Precision Paint Dispensing</h1>
+        <p>Engineered for accuracy, speed, and reliability.</p>
+        <a href="contact.html" class="btn-primary">Talk to Us <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-nav prev" aria-label="Previous slide">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="carousel-nav next" aria-label="Next slide">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+  <div class="carousel-progress">
+    <div class="progress-bar"></div>
+  </div>
+  <div class="carousel-dots"></div>
+  <div class="scroll-indicator">
+    <span class="scroll-text">Scroll</span>
+    <span class="scroll-line"></span>
+  </div>
+</section>
+
+<!-- Products Section -->
+<!-- Products Section -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Our Products</span>
+      <h2 class="section-title">Precision Engineering for <span class="highlight">Every Scale</span></h2>
+      <p class="section-subtitle single-line">From small retail stores to industrial manufacturing, we have the perfect solution for your needs.</p>
+    </div>
+    
+    <div class="product-showcase">
+      <div class="product-showcase-container">
+        <!-- Navigation Arrows -->
+        <button class="showcase-nav prev-btn" id="productPrev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <!-- Main Content Area -->
+        <div class="product-showcase-content">
+          <!-- Left Side - Product Info & Specs -->
+          <div class="product-info-side" id="productInfoSide">
+            <div class="product-badge-container">
+              <span class="product-badge-new" id="productBadge">NEW</span>
+            </div>
+            <h3 class="product-showcase-title" id="productTitle">M60 BEAST</h3>
+            <p class="product-showcase-desc" id="productDesc">Engineered to dominate · 8.8 L/min · Screw pump</p>
+            
+            <div class="product-showcase-specs" id="productSpecs">
+              <!-- Specs will be populated -->
+            </div>
+            
+            <a href="#" class="product-showcase-link" id="productLink">
+              Explore Product <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          
+          <!-- Center - Product Image -->
+          <div class="product-image-center" id="productImageCenter">
+            <div class="image-wrapper">
+              <img id="mainProductImage" src="images/products_section/M60.webp" alt="M60 BEAST">
+              <div class="image-glow"></div>
+            </div>
+          </div>
+          
+          <!-- Right Side - Quick Stats & Features -->
+          <div class="product-stats-side" id="productStatsSide">
+            <div class="stats-card">
+              <h4>Key Features</h4>
+              <ul class="feature-list" id="featureList">
+                <!-- Features will be populated -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <button class="showcase-nav next-btn" id="productNext">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <!-- Carousel Dots -->
+      <div class="showcase-dots" id="productDots"></div>
+    </div>
+    
+    <div class="view-all">
+      <a href="comparison.html" class="btn-secondary">Compare All Models <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Video Gallery Section -->
+<!-- Video Gallery Section -->
+<section class="video-gallery-section" id="video-gallery">
+  <div class="video-gallery-container">
+    <div class="gallery-header">
+      <span class="gallery-badge">See It In Action</span>
+      <h2 class="gallery-title">Dispensing <span class="highlight">Technology</span> in Motion</h2>
+      <p class="gallery-subtitle">Watch how our advanced dispensing systems deliver precision and speed for every application.</p>
+    </div>
+    
+    <div class="video-grid">
+      <!-- Sequential Dispensing Video -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <video preload="metadata" poster="images/video_poster/sequential_poster.jpg">
+            <source src="videos/video_section/M45 Sequential.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-overlay">
+            <div class="play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Sequential Dispensing</span>
+          <h3>M45 Sequential Dispenser</h3>
+          <p>Experience precision dosing with sequential technology. Perfect for high-accuracy applications where consistency is critical.</p>
+          <div class="video-specs">
+            <span class="video-spec"><i class="fas fa-microscope"></i> 0.03ml precision</span>
+            <span class="video-spec"><i class="fas fa-tachometer-alt"></i> 0.60 L/min flow</span>
+            <span class="video-spec"><i class="fas fa-chart-line"></i> Sequential accuracy</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Simultaneous Dispensing Video -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <video preload="metadata" poster="images/video_poster/simultaneous_poster.jpg">
+            <source src="videos/video_section/M45-SM SIM.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-overlay">
+            <div class="play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Simultaneous Dispensing</span>
+          <h3>M45-SM Simultaneous Dispenser</h3>
+          <p>Unleash parallel power with simultaneous dispensing. Dispense up to 8 colorants at once for maximum throughput.</p>
+          <div class="video-specs">
+            <span class="video-spec"><i class="fas fa-layer-group"></i> 8 circuits at once</span>
+            <span class="video-spec"><i class="fas fa-tachometer-alt"></i> 4.8 L/min total</span>
+            <span class="video-spec"><i class="fas fa-bolt"></i> Parallel dispensing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Comparison Note -->
+    <div class="comparison-note">
+      <div class="note-content">
+        <div class="note-icon">
+          <i class="fas fa-chart-simple"></i>
+        </div>
+        <div class="note-text">
+          <h4>Sequential vs Simultaneous: Which one is right for you?</h4>
+          <p>Sequential dispensing offers unmatched precision for small batches, while simultaneous dispensing delivers maximum throughput for high-volume operations.</p>
+        </div>
+      </div>
+      <a href="comparison.html" class="note-link">Compare Technologies <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Video Modal for Fullscreen -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-content">
+    <video id="modalVideo" controls></video>
+    <button class="modal-close" id="modalClose">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
+
+
+<!-- Software Section -->
+<section class="software-section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-badge">Software Intelligence</span>
+      <h2 class="section-title">Precision Control.<br><span class="highlight">Seamless Integration.</span></h2>
+      <p class="section-subtitle">MastriqONE - The future-ready ecosystem for paint retail management.</p>
+    </div>
+    <div class="software-showcase">
+      <div class="software-screens">
+        <div class="screen-screen screen-left">
+          <img src="images/screens/1.png" class="active" alt="Dashboard">
+          <img src="images/screens/2.png" alt="Analytics">
+          <img src="images/screens/3.png" alt="Reports">
+        </div>
+        <div class="software-center">
+          <img src="images/download.webp" alt="Mastriq System">
+        </div>
+        <div class="screen-screen screen-right">
+          <img src="images/screens/1.png" class="active" alt="Dashboard">
+          <img src="images/screens/2.png" alt="Analytics">
+          <img src="images/screens/3.png" alt="Reports">
+        </div>
+      </div>
+      <div class="software-features">
+        <div class="feature-grid">
+          <div class="feature-item"><i class="fas fa-chart-line"></i><h4>Real-time Analytics</h4><p>Monitor performance and data instantly</p></div>
+          <div class="feature-item"><i class="fas fa-cloud-upload-alt"></i><h4>Remote Updates</h4><p>Deploy updates with a single click</p></div>
+          <div class="feature-item"><i class="fas fa-shield-alt"></i><h4>Secure Access</h4><p>Enterprise-grade security protocols</p></div>
+          <div class="feature-item"><i class="fas fa-globe"></i><h4>Multi-platform</h4><p>Works across all your devices</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Component -->
+<div id="footer-container"></div>
+
+<!-- JavaScript Files -->
+<script src="js/main.js"></script>
+<script src="js/header.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/products.js"></script>
+<script src="js/software.js"></script>
+<script src="js/video-gallery.js"></script>
+<!-- Floating Contact Button -->
+<script src="js/floating-contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastriq | S45 Automatic Dispenser</title>
+  
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Global CSS Files (matching index.html) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/products.css">
+  
+  <style>
+    /* S45 Page Specific Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+    }
+    
+    /* SECTION 1: DARK BACKGROUND */
+    .product-detail-hero {
+      background: #0a0c12;
+      padding: 4rem 0 5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .hero-info {
+      flex: 1;
+      min-width: 280px;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background: rgba(118, 185, 0, 0.15);
+      color: #76b900;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1.2rem;
+    }
+    
+    .hero-info h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: #76b900;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+      color: #9ca3af;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    
+    .video-viewer {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
+      aspect-ratio: 16/9;
+    }
+    
+    .video-viewer video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .viewer-label {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+    
+    /* Value Props - Dark Theme with Animation */
+    .value-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 0;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
+    }
+    
+    .value-card-dark {
+      flex: 1;
+      min-width: 180px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .value-card-dark:nth-child(1) { animation-delay: 0.1s; }
+    .value-card-dark:nth-child(2) { animation-delay: 0.2s; }
+    .value-card-dark:nth-child(3) { animation-delay: 0.3s; }
+    .value-card-dark:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .value-card-dark:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(118, 185, 0, 0.1);
+      border-color: #76b900;
+      box-shadow: 0 15px 30px rgba(118, 185, 0, 0.15);
+    }
+    
+    .value-card-dark i {
+      font-size: 2rem;
+      color: #76b900;
+      margin-bottom: 0.75rem;
+      transition: transform 0.3s;
+    }
+    
+    .value-card-dark:hover i {
+      transform: scale(1.1);
+    }
+    
+    .value-card-dark h4 {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: #ffffff;
+    }
+    
+    .value-card-dark p {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    
+    /* SECTION 2: WHITE BACKGROUND */
+    .section-white-bg {
+      background: #ffffff;
+      padding: 4rem 0;
+    }
+    
+    .container-custom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Media Row - White Theme */
+    .media-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .media-col {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .section-title-light {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #1a1a1a;
+    }
+    
+    .video-container-light {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #f5f5f5;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .video-container-light video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .play-overlay:hover {
+      background: rgba(0,0,0,0.2);
+    }
+    
+    .play-btn-large {
+      width: 70px;
+      height: 70px;
+      background: #76b900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .play-btn-large:hover {
+      transform: scale(1.1);
+      background: #5e9c00;
+    }
+    
+    .floating-video-btn {
+      margin-top: 1rem;
+      background: #f0f0f0;
+      border: 1px solid #e0e0e0;
+      color: #76b900;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: fit-content;
+    }
+    
+    .floating-video-btn:hover {
+      background: #76b900;
+      color: white;
+      border-color: #76b900;
+    }
+    
+    /* Gallery Styles - Light Theme (4 images only) */
+    .carousel-container-light {
+      background: #f9fafb;
+      border-radius: 20px;
+      padding: 1rem;
+      border: 1px solid #eaeaea;
+    }
+    
+    .carousel-horizontal-layout {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .thumbnails-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 80px;
+    }
+    
+    .thumbnail-light {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      opacity: 0.7;
+    }
+    
+    .thumbnail-light.active {
+      border-color: #76b900;
+      opacity: 1;
+      transform: scale(1.02);
+    }
+    
+    .main-image-large {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .main-image-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #e5e5e5;
+      cursor: pointer;
+    }
+    
+    .main-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .image-counter {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      color: white;
+    }
+    
+    .enlarge-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .enlarge-icon:hover {
+      background: #76b900;
+    }
+    
+    .carousel-controls-vertical {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .carousel-btn-light {
+      background: white;
+      border: 1px solid #eaeaea;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #333;
+    }
+    
+    .carousel-btn-light:hover {
+      background: #76b900;
+      border-color: #76b900;
+      color: white;
+    }
+    
+    /* SECTION 3: BLACK BACKGROUND - Technical Specs + Comparison Table */
+    .section-black-bg {
+      background: #0a0c12;
+      padding: 4rem 0;
+    }
+    
+    /* Technical Specifications - Black Background */
+    .specs-black-section {
+      background: transparent;
+      border-radius: 24px;
+      padding: 0;
+      margin-bottom: 4rem;
+    }
+    
+    .specs-title-dark {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .specs-horizontal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+    }
+    
+    .spec-item-dark {
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+      padding: 1.2rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .spec-item-dark:hover {
+      transform: translateY(-5px);
+      background: rgba(118, 185, 0, 0.15);
+      border-color: #76b900;
+    }
+    
+    .spec-label-dark {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #76b900;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .spec-value-dark {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    
+    /* Comparison Table - Black Background */
+    .comparison-section-dark {
+      margin-top: 0;
+      margin-bottom: 0;
+      background: transparent;
+      border-radius: 24px;
+      padding: 0;
+    }
+    
+    .comp-title-dark {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+    
+    .comp-sub-dark {
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+    
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: 16px;
+    }
+    
+    .comparison-table-dark {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    
+    .comparison-table-dark th,
+    .comparison-table-dark td {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: #e5e7eb;
+    }
+    
+    .comparison-table-dark th {
+      background: rgba(118, 185, 0, 0.2);
+      font-weight: 600;
+      color: #76b900;
+      font-size: 0.9rem;
+    }
+    
+    .comparison-table-dark tr:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .comparison-table-dark tr.highlight-row {
+      background: rgba(118, 185, 0, 0.25);
+      position: relative;
+    }
+    
+    .comparison-table-dark tr.highlight-row td {
+      color: #ffffff;
+      font-weight: 500;
+    }
+    
+    .comparison-table-dark tr.highlight-row td:first-child {
+      border-left: 4px solid #76b900;
+    }
+    
+    .model-link {
+      color: #76b900;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .model-link:hover {
+      text-decoration: underline;
+      color: #8bc34a;
+    }
+    
+    .model-link.active-model {
+      color: #76b900;
+      text-decoration: underline;
+    }
+    
+    .comparison-cta-dark {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .btn-secondary-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: #76b900;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      border: 1.5px solid #76b900;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .btn-secondary-dark:hover {
+      background: #76b900;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(118, 185, 0, 0.3);
+    }
+    
+    /* Floating Video Modal */
+    .floating-video-modal {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 360px;
+      background: #0a0c12;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      z-index: 1000;
+      display: none;
+      border: 1px solid rgba(118, 185, 0, 0.3);
+    }
+    
+    .floating-video-modal.active {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .floating-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      background: #1a1a1a;
+      border-radius: 16px 16px 0 0;
+      cursor: move;
+    }
+    
+    .floating-header h4 {
+      color: #76b900;
+      font-size: 0.9rem;
+    }
+    
+    .close-floating {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    
+    .floating-video {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+    
+    .floating-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    
+    .lightbox-modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    
+    .lightbox-content img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 16px;
+    }
+    
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      background: rgba(0,0,0,0.7);
+      border: none;
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+    
+    .lightbox-close {
+      top: 20px;
+      right: 20px;
+    }
+    
+    .lightbox-prev {
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .lightbox-next {
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-info h1 { font-size: 2.2rem; }
+      .hero-grid { flex-direction: column; }
+      .thumbnails-vertical { flex-direction: row; width: 100%; overflow-x: auto; }
+      .carousel-horizontal-layout { flex-direction: column; }
+      .specs-horizontal { flex-direction: column; }
+      .floating-video-modal { width: 300px; right: 15px; bottom: 15px; }
+      .value-strip { margin-top: 2rem; }
+      .comparison-table-dark th,
+      .comparison-table-dark td {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Container -->
+<div id="header-container"></div>
+
+<main>
+  <!-- SECTION 1: DARK BACKGROUND (Hero + Video + Value Props) -->
+  <section class="product-detail-hero">
+    <div class="hero-grid">
+      <div class="hero-info">
+        <span class="hero-badge"><i class="fas fa-droplet"></i> Precision Dispensing</span>
+        <h1>S45 Automatic Dispenser</h1>
+        <div class="hero-tagline">Precision. Accelerated.</div>
+        <p class="hero-description">
+          The S45 is a high‑performance automatic paint dispenser engineered for precision‑driven retail and small‑to‑medium production environments.
+        </p>
+        <button class="btn-primary" id="watchTourHeroBtn"><i class="fas fa-play-circle"></i> Watch product tour</button>
+      </div>
+      
+      <!-- Video Viewer with local s45.mp4 -->
+      <div class="video-viewer">
+        <video id="s45ProductVideo" autoplay muted loop playsinline>
+          <source src="videos/s45/s45.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="viewer-label"><i class="fas fa-video"></i> S45 in action</div>
+      </div>
+    </div>
+    
+    <!-- Value Props with Animation - Below Watch Tour Button -->
+    <div class="value-strip" id="valuePropsContainer"></div>
+  </section>
+
+  <!-- SECTION 2: WHITE BACKGROUND (Video Tour + Gallery) -->
+  <section class="section-white-bg">
+    <div class="container-custom">
+      
+      <!-- Media Row: Video Tour + Gallery -->
+      <div class="media-row">
+        <!-- Video Tour Column -->
+        <div class="media-col">
+          <h2 class="section-title-light"><i class="fas fa-play-circle" style="color: #76b900;"></i> Product tour</h2>
+          <div class="video-container-light" id="tourVideoContainer">
+            <video id="tourVideo" preload="metadata" poster="images/s45/s45_poster.jpg">
+              <source src="videos/s45/s45_tour.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="play-overlay" id="tourPlayOverlay">
+              <div class="play-btn-large">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+          </div>
+          <button class="floating-video-btn" id="floatingVideoBtn">
+            <i class="fas fa-window-restore"></i> Play in floating window
+          </button>
+        </div>
+        
+        <!-- Gallery Column - Only 4 Images -->
+        <div class="media-col">
+          <h2 class="section-title-light"><i class="fas fa-images" style="color: #76b900;"></i> Gallery</h2>
+          <div class="carousel-container-light">
+            <div class="carousel-horizontal-layout">
+              <div class="thumbnails-vertical" id="thumbnailsGrid"></div>
+              <div class="main-image-large">
+                <div class="main-image-container" id="mainImageContainer">
+                  <img id="mainCarouselImage" src="images/s45/s45_1.png" alt="S45 view">
+                  <div class="image-counter">
+                    <i class="fas fa-camera"></i> <span id="currentImageIndex">1</span>/<span id="totalImages">4</span>
+                  </div>
+                  <div class="enlarge-icon" id="enlargeBtn">
+                    <i class="fas fa-expand"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-controls-vertical">
+              <button class="carousel-btn-light" id="prevImageBtn"><i class="fas fa-chevron-left"></i></button>
+              <button class="carousel-btn-light" id="nextImageBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: BLACK BACKGROUND (Technical Specifications + Comparison Table) -->
+  <section class="section-black-bg">
+    <div class="container-custom">
+      
+      <!-- Technical Specifications -->
+      <div class="specs-black-section">
+        <h2 class="specs-title-dark"><i class="fas fa-cog" style="color: #76b900;"></i> Technical specifications</h2>
+        <div class="specs-horizontal" id="specsHorizontal"></div>
+      </div>
+      
+      <!-- Comparison Table -->
+      <div class="comparison-section-dark">
+        <h2 class="comp-title-dark"><i class="fas fa-chart-bar" style="color: #76b900;"></i> Dispenser comparison</h2>
+        <p class="comp-sub-dark">Compare specifications across our entire dispenser family</p>
+        <div class="table-responsive">
+          <table class="comparison-table-dark">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Min. dose</th>
+                <th>Flow rate</th>
+                <th>Canisters</th>
+                <th>Weight</th>
+                <th>Special feature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row">
+                <td><a href="s45.html" class="model-link active-model">S45</a></td>
+                <td>Sequential</td>
+                <td>0.03 ml</td>
+                <td>0.30 L/min</td>
+                <td>Up to 16</td>
+                <td>107 kg</td>
+                <td>Cluster stirring</td>
+              </tr>
+              <tr>
+                <td><a href="m45.html" class="model-link">M45</a></td>
+                <td>Sequential</td>
+                <td>0.03 ml</td>
+                <td>0.60 L/min</td>
+                <td>Up to 16</td>
+                <td>111 kg</td>
+                <td>Higher throughput</td>
+              </tr>
+              <tr>
+                <td><a href="m45-sm.html" class="model-link">M45-SM</a></td>
+                <td>Simultaneous</td>
+                <td>0.03 ml</td>
+                <td>4.8 L/min</td>
+                <td>Up to 16</td>
+                <td>111 kg</td>
+                <td>Parallel dispensing</td>
+              </tr>
+              <tr>
+                <td><a href="m60-beast.html" class="model-link">M60 BEAST</a></td>
+                <td>Simultaneous</td>
+                <td>0.03 ml</td>
+                <td>8.8 L/min</td>
+                <td>Up to 16</td>
+                <td>~140 kg</td>
+                <td>Screw pump</td>
+              </tr>
+              <tr>
+                <td><a href="tm-manual.html" class="model-link">TM Series</a></td>
+                <td>Manual</td>
+                <td>Variable</td>
+                <td>–</td>
+                <td>12/16/24</td>
+                <td>–</td>
+                <td>Flexible scale</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="comparison-cta-dark">
+          <a href="comparison.html" class="btn-secondary-dark"><i class="fas fa-balance-scale"></i> Full comparison</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer Container -->
+<div id="footer-container"></div>
+
+<!-- Floating Video Modal -->
+<div class="floating-video-modal" id="floatingVideoModal">
+  <div class="floating-header">
+    <h4><i class="fas fa-play-circle"></i> S45 Tour</h4>
+    <button class="close-floating" id="closeFloatingBtn"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="floating-video">
+    <video id="floatingVideo" controls loop>
+      <source src="videos/s45/s45_tour.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightboxModal">
+  <div class="lightbox-content">
+    <img id="lightboxImage" src="" alt="Enlarged view">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Value Props Data
+    const valueProps = [
+      { icon: "fas fa-microscope", title: "±0.03ml precision", desc: "Ultra-fine dosing accuracy" },
+      { icon: "fas fa-tachometer-alt", title: "0.30 L/min flow", desc: "Consistent dispensing rate" },
+      { icon: "fas fa-database", title: "16 Canisters", desc: "2.0L each, high capacity" },
+      { icon: "fas fa-industry", title: "Industrial Build", desc: "Stainless steel chassis" }
+    ];
+    
+    // Specs Data
+    const specs = [
+      { label: "Min. Dose", value: "0.03 ml" },
+      { label: "Flow Rate", value: "0.30 L/min" },
+      { label: "Canister Capacity", value: "16 x 2.0L" },
+      { label: "Weight", value: "107 kg" },
+      { label: "Dimensions", value: "562 x 915 x 680 mm" },
+      { label: "Power", value: "110-240V, 350W" }
+    ];
+    
+    // Gallery Images - Only 4 images
+    const galleryImages = [
+      "images/s45/s45_1.png",
+      "images/s45/s45_2.png",
+      "images/s45/s45_3.png",
+      "images/s45/s45_4.png"
+    ];
+    let currentImageIndex = 0;
+    
+    // Build Value Props
+    const valueContainer = document.getElementById('valuePropsContainer');
+    if(valueContainer) {
+      valueContainer.innerHTML = valueProps.map(v => `
+        <div class="value-card-dark">
+          <i class="${v.icon}"></i>
+          <h4>${v.title}</h4>
+          <p>${v.desc}</p>
+        </div>
+      `).join('');
+    }
+    
+    // Build Specs Horizontal
+    const specsContainer = document.getElementById('specsHorizontal');
+    if(specsContainer) {
+      specsContainer.innerHTML = specs.map(s => `
+        <div class="spec-item-dark">
+          <div class="spec-label-dark">${s.label}</div>
+          <div class="spec-value-dark">${s.value}</div>
+        </div>
+      `).join('');
+    }
+    
+    // Carousel Functionality (4 images only)
+    const thumbContainer = document.getElementById('thumbnailsGrid');
+    const mainImg = document.getElementById('mainCarouselImage');
+    const totalSpan = document.getElementById('totalImages');
+    const currentSpan = document.getElementById('currentImageIndex');
+    const prevBtn = document.getElementById('prevImageBtn');
+    const nextBtn = document.getElementById('nextImageBtn');
+    const enlargeBtn = document.getElementById('enlargeBtn');
+    
+    if(thumbContainer) {
+      totalSpan.innerText = galleryImages.length;
+      
+      function renderThumbnails() {
+        thumbContainer.innerHTML = galleryImages.map((src, idx) => `
+          <img class="thumbnail-light ${idx === currentImageIndex ? 'active' : ''}" data-index="${idx}" src="${src}" alt="thumb">
+        `).join('');
+        document.querySelectorAll('.thumbnail-light').forEach(thumb => {
+          thumb.addEventListener('click', (e) => {
+            const idx = parseInt(thumb.dataset.index);
+            setActiveImage(idx);
+          });
+        });
+      }
+      
+      function setActiveImage(index) {
+        currentImageIndex = (index + galleryImages.length) % galleryImages.length;
+        mainImg.src = galleryImages[currentImageIndex];
+        currentSpan.innerText = currentImageIndex + 1;
+        document.querySelectorAll('.thumbnail-light').forEach((thumb, i) => {
+          if(i === currentImageIndex) thumb.classList.add('active');
+          else thumb.classList.remove('active');
+        });
+      }
+      
+      if(prevBtn) prevBtn.addEventListener('click', () => setActiveImage(currentImageIndex - 1));
+      if(nextBtn) nextBtn.addEventListener('click', () => setActiveImage(currentImageIndex + 1));
+      renderThumbnails();
+      setActiveImage(0);
+      
+      // Lightbox
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImage');
+      const closeLight = document.getElementById('lightboxClose');
+      const prevLight = document.getElementById('lightboxPrev');
+      const nextLight = document.getElementById('lightboxNext');
+      let lightboxIndex = 0;
+      
+      function openLightbox(idx) {
+        lightboxIndex = idx;
+        lightboxImg.src = galleryImages[lightboxIndex];
+        lightboxModal.classList.add('active');
+      }
+      
+      if(enlargeBtn) enlargeBtn.addEventListener('click', () => openLightbox(currentImageIndex));
+      if(mainImg) mainImg.addEventListener('click', () => openLightbox(currentImageIndex));
+      if(closeLight) closeLight.addEventListener('click', () => lightboxModal.classList.remove('active'));
+      if(prevLight) prevLight.addEventListener('click', () => {
+        lightboxIndex = (lightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+        lightboxImg.src = galleryImages[lightboxIndex];
+      });
+      if(nextLight) nextLight.addEventListener('click', () => {
+        lightboxIndex = (lightboxIndex + 1) % galleryImages.length;
+        lightboxImg.src = galleryImages[lightboxIndex];
+      });
+      if(lightboxModal) lightboxModal.addEventListener('click', (e) => { if(e.target === lightboxModal) lightboxModal.classList.remove('active'); });
+    }
+    
+    // Video Tour with Play/Pause
+    const tourVideo = document.getElementById('tourVideo');
+    const tourOverlay = document.getElementById('tourPlayOverlay');
+    
+    if(tourVideo && tourOverlay) {
+      tourOverlay.addEventListener('click', () => {
+        tourVideo.play();
+        tourOverlay.style.display = 'none';
+      });
+      tourVideo.addEventListener('pause', () => {
+        if(tourVideo.currentTime > 0 && !tourVideo.ended) {
+          tourOverlay.style.display = 'flex';
+        }
+      });
+      tourVideo.addEventListener('ended', () => {
+        tourOverlay.style.display = 'flex';
+      });
+    }
+    
+    // Floating Video Modal
+    const floatingModal = document.getElementById('floatingVideoModal');
+    const floatingBtn = document.getElementById('floatingVideoBtn');
+    const closeFloating = document.getElementById('closeFloatingBtn');
+    const floatingVideo = document.getElementById('floatingVideo');
+    
+    if(floatingBtn) {
+      floatingBtn.addEventListener('click', () => {
+        floatingModal.classList.add('active');
+        if(tourVideo && tourVideo.paused) {
+          floatingVideo.currentTime = tourVideo.currentTime;
+        }
+        floatingVideo.play();
+      });
+    }
+    
+    if(closeFloating) {
+      closeFloating.addEventListener('click', () => {
+        floatingModal.classList.remove('active');
+        floatingVideo.pause();
+      });
+    }
+    
+    // Hero Watch Tour Button
+    const watchTourBtn = document.getElementById('watchTourHeroBtn');
+    if(watchTourBtn) {
+      watchTourBtn.addEventListener('click', () => {
+        floatingModal.classList.add('active');
+        floatingVideo.play();
+      });
+    }
+    
+    // Ensure main video plays
+    const mainVideo = document.getElementById('s45ProductVideo');
+    if(mainVideo) {
+      mainVideo.play().catch(e => console.log('Auto-play prevented:', e));
+    }
+  })();
+</script>
+
+<!-- Load existing header and footer from index.html structure -->
+<script>
+  if(typeof initHeader === 'function') {
+    initHeader();
+  }
+</script>
+<script src="js/main.js"></script>
+<script src="js/header.js"></script>
+<script src="js/hero.js"></script>
+<!-- Floating Contact Button -->
+<script src="js/floating-contact.js"></script>
+</body>
+</html>

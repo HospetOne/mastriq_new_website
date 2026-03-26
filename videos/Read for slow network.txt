@@ -1,0 +1,11 @@
+If you want, I can:
+
+🔹 Pick a perfect industrial MP4 for you
+
+🔹 Optimize video size for fast load
+
+🔹 Add fallback image for slow networks
+
+🔹 Make video disable on mobile (performance)
+
+Just say the word 👌

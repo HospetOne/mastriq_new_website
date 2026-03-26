@@ -1,0 +1,209 @@
+/* ===== GLOBAL STYLES - ABB INSPIRED ===== */
+:root {
+  /* --primary: #76b900;
+  --primary-dark: #5e9c00; */
+    --primary: #20ffb5;
+  --primary-dark: #20ffb5;
+  /* --primary-light: rgba(118, 185, 0, 0.08); */
+    --primary-light:#20ffb5;
+  --text-dark: #1a1a1a;
+  --text-gray: #4a4a4a;
+  --text-light: #6b6b6b;
+  --text-muted: #888888;
+  --bg-white: #ffffff;
+  --bg-light: #fafafa;
+  --bg-gray: #f5f5f5;
+  --border-light: #eaeaea;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 32px rgba(118, 185, 0, 0.12);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-white);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Buttons - ABB Style */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--text-dark);
+  padding: 0.75rem 1.5rem;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Section Headers - ABB Style *//* ===== SECTION HEADER STYLES - STAGGERED ANIMATION ===== */
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+/* Badge - animates first */
+/* Badge with neon glow border */
+/* Badge with ribbon style */
+.section-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color:black;
+  background: rgba(33, 33, 33, 0.15);
+  padding: 0.4rem 1.2rem;
+  border-radius: 60px;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.section-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2));
+  clip-path: polygon(0% 0%, 100% 0%, 95% 50%, 100% 100%, 0% 100%, 5% 50%);
+}
+/* Section Title - SLIDE FROM LEFT with delay after badge */
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  animation: slideFromLeft 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.15s forwards;
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+/* Highlight with underline */
+.section-title .highlight {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  /* background: rgba(118, 185, 0, 0.2); */
+  border-radius: 4px;
+  z-index: -1;
+}
+
+/* Subtitle - fades in after title */
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+  animation: fadeInUp 0.5s ease 0.35s forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Keyframes */
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-subtitle {
+    font-size: 0.9rem;
+    white-space: normal;
+    max-width: 90%;
+  }
+  .section-title .highlight::after {
+    bottom: 4px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+}

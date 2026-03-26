@@ -1,0 +1,252 @@
+/* ===== HERO CAROUSEL STYLES - ABB INSPIRED ===== */
+.hero-carousel {
+  position: relative;
+  height: 85vh;
+  min-height: 550px;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.slides {
+  position: relative;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide-1 {
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2a);
+}
+
+.slide-2 {
+  background: linear-gradient(135deg, #0f0f1a, #1a2a2a);
+}
+
+.slide-3 {
+  position: relative;
+}
+
+.slide-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.slide-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8%;
+  width: 100%;
+  max-width: 550px;
+  z-index: 2;
+  text-align: left;
+}
+
+.slide-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  background: rgba(118, 185, 0, 0.1);
+  padding: 0.3rem 1rem;
+  border-radius: 40px;
+  margin-bottom: 1rem;
+}
+
+.slide-content h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.slide-content p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+  font-size: 1rem;
+  color: white;
+}
+
+.carousel-nav:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.carousel-nav.prev {
+  left: 2rem;
+}
+
+.carousel-nav.next {
+  right: 2rem;
+}
+
+/* Progress Bar - More Visible */
+.carousel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--primary);
+  transition: width linear;
+  box-shadow: 0 0 8px rgba(118, 185, 0, 0.5);
+}
+
+/* Hero Dots - Right Side (no interference) */
+.carousel-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: var(--primary);
+  width: 24px;
+  border-radius: 12px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.scroll-text {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(180deg, var(--primary), transparent);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@media (max-width: 1024px) {
+  .hero-carousel {
+    height: 70vh;
+    min-height: 500px;
+  }
+  .slide-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: 60vh;
+  }
+  .slide-content {
+    left: 5%;
+    right: 5%;
+    max-width: 90%;
+  }
+  .slide-content h1 {
+    font-size: 1.8rem;
+  }
+  .carousel-nav {
+    width: 36px;
+    height: 36px;
+  }
+  .carousel-nav.prev {
+    left: 1rem;
+  }
+  .carousel-nav.next {
+    right: 1rem;
+  }
+  .carousel-dots {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-content h1 {
+    font-size: 1.5rem;
+  }
+  .slide-content p {
+    font-size: 0.85rem;
+  }
+  .scroll-indicator {
+    display: none;
+  }
+}
