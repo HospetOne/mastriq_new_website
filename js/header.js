@@ -1,8 +1,63 @@
-// ===== HEADER FUNCTIONALITY - COMPLETE FIX =====
+// ===== HEADER FUNCTIONALITY - FULLY FIXED FOR MOBILE =====
 (function() {
   'use strict';
   
   let overlay = null;
+  let isMobile = false;
+  
+  function checkMobile() {
+    return window.innerWidth <= 768;
+  }
+  
+  function createOverlay() {
+    if (!overlay && checkMobile()) {
+      overlay = document.createElement('div');
+      overlay.className = 'menu-overlay';
+      document.body.appendChild(overlay);
+      
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+    }
+  }
+  
+  function removeOverlay() {
+    if (overlay && overlay.parentNode) {
+      overlay.removeEventListener('click', closeMobileMenu);
+      overlay.remove();
+      overlay = null;
+    }
+  }
+  
+  function closeMobileMenu() {
+    const nav = document.querySelector('.nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (nav) {
+      nav.classList.remove('open');
+      if (menuToggle) menuToggle.textContent = '☰';
+      document.body.style.overflow = '';
+    }
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
+  }
+  
+  function openMobileMenu() {
+    const nav = document.querySelector('.nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (nav) {
+      nav.classList.add('open');
+      if (menuToggle) menuToggle.textContent = '✖';
+      document.body.style.overflow = 'hidden';
+    }
+    if (overlay) {
+      overlay.classList.add('active');
+    }
+  }
   
   function initHeader() {
     // Mega Menu Category Switching
@@ -12,7 +67,11 @@
     
     if (categoryItems.length) {
       categoryItems.forEach(item => {
-        item.addEventListener('click', (e) => {
+        item.removeEventListener('click', handleCategoryClick);
+        item.addEventListener('click', handleCategoryClick);
+        
+        function handleCategoryClick(e) {
+          e.preventDefault();
           e.stopPropagation();
           const category = item.dataset.category;
           categoryItems.forEach(cat => cat.classList.remove('active'));
@@ -25,7 +84,7 @@
             if (mixersSection) mixersSection.classList.add('active');
             if (dispensersSection) dispensersSection.classList.remove('active');
           }
-        });
+        }
       });
     }
     
@@ -34,43 +93,13 @@
     const nav = document.querySelector('.nav');
     const navItems = document.querySelectorAll('.nav-item');
     
-    // Create overlay for mobile menu
-    function createOverlay() {
-      if (!overlay && window.innerWidth <= 768) {
-        overlay = document.createElement('div');
-        overlay.className = 'menu-overlay';
-        document.body.appendChild(overlay);
-      }
-    }
-    
-    function removeOverlay() {
-      if (overlay && overlay.parentNode) {
-        overlay.remove();
-        overlay = null;
-      }
-    }
-    
-    function closeMobileMenu() {
-      if (nav) {
-        nav.classList.remove('open');
-        if (menuToggle) menuToggle.textContent = '☰';
-      }
-      if (overlay) overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    
-    function openMobileMenu() {
-      if (nav) {
-        nav.classList.add('open');
-        if (menuToggle) menuToggle.textContent = '✖';
-      }
-      if (overlay) overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
     // Toggle mobile menu
     if (menuToggle) {
-      menuToggle.addEventListener('click', (e) => {
+      menuToggle.removeEventListener('click', toggleMenu);
+      menuToggle.addEventListener('click', toggleMenu);
+      
+      function toggleMenu(e) {
+        e.preventDefault();
         e.stopPropagation();
         if (nav.classList.contains('open')) {
           closeMobileMenu();
@@ -78,58 +107,71 @@
           createOverlay();
           openMobileMenu();
         }
-      });
+      }
     }
     
-    // Mobile Mega Menu Toggle
+    // Mobile Mega Menu Toggle - CRITICAL FIX
     navItems.forEach(item => {
       const link = item.querySelector('a');
       if (link) {
-        link.addEventListener('click', (e) => {
-          if (window.innerWidth <= 768) {
+        link.removeEventListener('click', handleMobileMegaMenu);
+        link.addEventListener('click', handleMobileMegaMenu);
+        
+        function handleMobileMegaMenu(e) {
+          if (checkMobile()) {
             e.preventDefault();
             e.stopPropagation();
+            
             // Close other open mega menus
             navItems.forEach(other => {
               if (other !== item && other.classList.contains('active')) {
                 other.classList.remove('active');
               }
             });
+            
+            // Toggle current
             item.classList.toggle('active');
           }
-        });
+        }
       }
     });
     
-    // Close menu when clicking overlay
-    if (overlay) {
-      overlay.addEventListener('click', closeMobileMenu);
-    }
-    
     // Close menu when clicking nav links (except product menu)
     document.querySelectorAll('.nav > a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && link.getAttribute('href') !== '#') {
+      link.removeEventListener('click', handleNavLinkClick);
+      link.addEventListener('click', handleNavLinkClick);
+      
+      function handleNavLinkClick(e) {
+        const href = link.getAttribute('href');
+        if (checkMobile() && href && href !== '#' && href !== '#products') {
           closeMobileMenu();
         }
-      });
+      }
     });
     
     // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768 && nav && nav.classList.contains('open')) {
+    document.removeEventListener('click', handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
+    
+    function handleOutsideClick(e) {
+      if (checkMobile() && nav && nav.classList.contains('open')) {
         if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
           closeMobileMenu();
         }
       }
-    });
+    }
     
     // Handle window resize
     let resizeTimer;
-    window.addEventListener('resize', () => {
+    window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
+    
+    function handleResize() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (window.innerWidth > 768) {
+        isMobile = checkMobile();
+        
+        if (!isMobile) {
           if (nav && nav.classList.contains('open')) {
             closeMobileMenu();
           }
@@ -142,7 +184,7 @@
           createOverlay();
         }
       }, 100);
-    });
+    }
     
     // Set active menu based on current page
     const currentPath = window.location.pathname;
@@ -153,6 +195,7 @@
       }
     });
     
+    // Initial setup
     createOverlay();
   }
   
