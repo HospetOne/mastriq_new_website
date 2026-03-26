@@ -1,11 +1,20 @@
-/* ===== HEADER STYLES - COMPLETE FIXED ===== */
+s
+
+
+/* ===== HEADER STYLES - NO BLUR ===== */
 .main-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10000;
   background: #ffffff;
   border-bottom: 1px solid #eaeaea;
   width: 100%;
+  /* Remove any potential blur effects */
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transform: none !important;
 }
 
 .nav-bar {
@@ -18,6 +27,10 @@
   gap: 1rem;
   background: #ffffff;
   position: relative;
+  /* Remove any blur effects */
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* Brand Section */
@@ -25,7 +38,6 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  z-index: 1002;
 }
 
 .brand {
@@ -237,7 +249,6 @@
   align-items: center;
   gap: 0.8rem;
   flex-shrink: 0;
-  z-index: 1002;
 }
 
 .search-toggle,
@@ -261,35 +272,21 @@
   cursor: pointer;
 }
 
-/* Menu Toggle Button - Mobile */
+/* Menu Toggle Button - Desktop hidden */
 .menu-toggle {
   display: none;
-  background: #20FFB5;
-  border: none;
-  font-size: 1.6rem;
-  cursor: pointer;
-  color: #0a0c12;
-  padding: 0.5rem;
-  order: -1;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  position: relative;
-  z-index: 10001;
 }
 
-/* ===== MOBILE RESPONSIVE STYLES ===== */
+/* ===== MOBILE RESPONSIVE STYLES - NO BLUR ===== */
 @media (max-width: 768px) {
+  /* Menu Toggle - Clean, sharp, NO BLUR */
   .menu-toggle {
     display: flex !important;
     background: #20FFB5 !important;
-    border: none !important;
+    border: 2px solid #000000 !important;
     font-size: 1.6rem !important;
     cursor: pointer !important;
-    color: #0a0c12 !important;
+    color: #000000 !important;
     padding: 0.5rem !important;
     width: 44px !important;
     height: 44px !important;
@@ -298,15 +295,42 @@
     justify-content: center !important;
     font-weight: bold !important;
     position: relative !important;
-    z-index: 10001 !important;
+    z-index: 100001 !important;
+    margin-right: 0.5rem !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    /* CRITICAL: Remove all blur and filter effects */
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-shadow: none !important;
+  }
+  
+  /* Ensure no blur on any parent element */
+  .main-header,
+  .nav-bar,
+  .brand-wrap,
+  .header-extras {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  .nav-bar {
+    padding: 0.6rem 1rem;
   }
   
   .brand-tagline {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
   }
   
   .brand {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   
   .header-extras {
@@ -314,36 +338,39 @@
   }
   
   .sign-in-btn {
-    padding: 0.3rem 0.8rem;
-    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
   }
   
   .search-toggle,
   .lang-toggle {
     padding: 0.3rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   
-  /* Mobile Menu - Positioned Below Header */
+  /* Mobile Menu */
   .nav {
     position: fixed !important;
-    top: 70px !important; /* Position below header */
+    top: 65px !important;
     left: -100% !important;
-    width: 100% !important;
+    width: 85% !important;
     max-width: 320px !important;
-    height: calc(100vh - 70px) !important;
+    height: calc(100vh - 65px) !important;
     background: #ffffff !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
     padding: 1rem 1.2rem 2rem !important;
     transition: left 0.3s ease !important;
-    z-index: 10000 !important;
+    z-index: 100000 !important;
     gap: 0 !important;
     overflow-y: auto !important;
     margin: 0 !important;
-    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15) !important;
     display: flex !important;
+    /* No blur on menu */
+    filter: none !important;
+    backdrop-filter: none !important;
   }
   
   .nav.open {
@@ -361,6 +388,10 @@
     font-size: 1rem;
     padding: 0.9rem 0;
     text-align: left;
+    text-decoration: none;
+    color: #1a1a1a;
+    display: block;
+    cursor: pointer !important;
   }
   
   .nav-item > a {
@@ -371,6 +402,8 @@
     align-items: center;
     width: 100%;
     cursor: pointer;
+    text-decoration: none;
+    color: #1a1a1a;
   }
   
   .nav-item > a::after {
@@ -385,7 +418,7 @@
     transform: rotate(180deg);
   }
   
-  /* Mobile Mega Menu - Opens Below Products Link */
+  /* Mobile Mega Menu */
   .mega-menu {
     position: static !important;
     width: 100% !important;
@@ -398,6 +431,7 @@
     border: none !important;
     opacity: 1 !important;
     visibility: visible !important;
+    filter: none !important;
   }
   
   .nav-item.active .mega-menu {
@@ -406,32 +440,32 @@
   
   .mega-container {
     flex-direction: column !important;
-    padding: 1rem !important;
-    gap: 1rem !important;
+    padding: 0.8rem !important;
+    gap: 0.8rem !important;
   }
   
   .mega-categories {
     width: 100% !important;
     border-right: none !important;
     border-bottom: 1px solid #eaeaea !important;
-    padding: 0 0 0.8rem 0 !important;
+    padding: 0 0 0.6rem 0 !important;
     display: flex !important;
-    gap: 0.8rem !important;
+    gap: 0.6rem !important;
     flex-wrap: wrap !important;
   }
   
   .category-item {
     flex: 1 !important;
     justify-content: center !important;
-    padding: 0.6rem !important;
-    font-size: 0.85rem !important;
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
   }
   
   .product-scroll {
     flex-direction: column !important;
     overflow-x: visible !important;
-    gap: 0.8rem !important;
-    max-height: 350px !important;
+    gap: 0.6rem !important;
+    max-height: 300px !important;
     overflow-y: auto !important;
   }
   
@@ -440,31 +474,38 @@
     flex-direction: row !important;
     min-width: auto !important;
     text-align: left !important;
-    gap: 1rem !important;
-    padding: 0.8rem !important;
+    gap: 0.8rem !important;
+    padding: 0.6rem !important;
     align-items: center !important;
+    text-decoration: none !important;
   }
   
   .mega-product-item img {
-    width: 45px !important;
-    height: 45px !important;
+    width: 40px !important;
+    height: 40px !important;
     margin-bottom: 0 !important;
   }
   
-  .mega-product-info {
-    text-align: left !important;
+  .mega-product-info strong {
+    font-size: 0.8rem !important;
   }
   
-  /* Mobile Menu Overlay */
+  .mega-product-info span {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Mobile Menu Overlay - No Blur */
   .menu-overlay {
     position: fixed;
-    top: 70px;
+    top: 65px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 65px);
     background: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    z-index: 99999;
     display: none;
+    filter: none !important;
+    backdrop-filter: none !important;
   }
   
   .menu-overlay.active {
@@ -475,11 +516,11 @@
 /* Small Mobile */
 @media (max-width: 480px) {
   .nav-bar {
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.8rem;
   }
   
   .brand {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .brand-tagline {
@@ -487,25 +528,46 @@
   }
   
   .menu-toggle {
-    width: 40px;
-    height: 40px;
-    font-size: 1.4rem;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.3rem !important;
   }
   
   .nav {
-    top: 60px !important;
-    height: calc(100vh - 60px) !important;
-    padding: 0.8rem 1rem 1.5rem !important;
-  }
-  
-  .nav > a,
-  .nav-item > a {
-    font-size: 0.95rem;
-    padding: 0.8rem 0;
+    top: 55px !important;
+    height: calc(100vh - 55px) !important;
   }
   
   .menu-overlay {
-    top: 60px;
-    height: calc(100vh - 60px);
+    top: 55px;
+    height: calc(100vh - 55px);
   }
+}
+
+/* Ensure nav links are clickable */
+.nav > a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  display: block !important;
+  z-index: 100002 !important;
+  position: relative !important;
+}
+
+/* Make sure links are not hidden behind overlay */
+.nav.open {
+  z-index: 100000 !important;
+}
+
+.nav.open > a,
+.nav.open .nav-item > a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* Force no blur on body and html */
+html, body {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
