@@ -40,15 +40,37 @@ s
   flex-shrink: 0;
 }
 
-.brand {
+/* .brand {
   font-size: 1.5rem;
   font-weight: 800;
   color: #1a1a1a;
   text-decoration: none;
   letter-spacing: -0.02em;
   line-height: 1.2;
-}
+} */
 
+/* Eurostile Extended Font for mastriq brand */
+/* Add to your CSS */
+/* Add to your CSS */
+/* .brand {
+  font-family: 'Oswald', 'Eurostile Extended', 'Impact', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  color: #1a1a1a;
+} */
+/* Eurostile Extended Font for mastriq brand - EXTRA BOLD */
+.brand {
+  font-family: 'Eurostile Extended', 'Eurostile', 'Eurostile LT Std', 'Orbitron', 'Inter', sans-serif;
+  font-size: 1.6rem;        /* ← Slightly larger size */
+  font-weight: 500;          /* ← Max boldness */
+  color: #1a1a1a;
+  text-decoration: none;
+  letter-spacing: 1px;       /* ← More spacing between letters */
+  line-height: 1.2;
+  text-transform: lowercase;  /* ← ALL CAPS for bolder appearance */
+}
 .brand-tagline {
   font-size: 0.65rem;
   color: #20FFB5;
