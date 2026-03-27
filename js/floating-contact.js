@@ -1,4 +1,4 @@
-// Floating Contact Button - Appears on all pages
+// Floating Contact Button - Appears on all pages (Aqua Marine Theme)
 (function() {
     // Create floating button element
     const floatingBtn = document.createElement('div');
@@ -10,11 +10,11 @@
         </a>
     `;
     
-    // Add styles
+    // Add styles with Aqua Marine colors
     const styles = `
         .floating-contact-btn {
             position: fixed;
-            bottom: 30px;
+            bottom: 100px;
             right: 30px;
             z-index: 9999;
             cursor: pointer;
@@ -26,9 +26,9 @@
             justify-content: center;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #76b900, #5e9c00);
+            background: linear-gradient(135deg, #20FFB5, #00E69C);
             border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(118, 185, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(32, 255, 181, 0.4);
             transition: all 0.3s ease;
             text-decoration: none;
             animation: pulse 2s infinite;
@@ -36,13 +36,13 @@
         
         .floating-contact-link i {
             font-size: 1.8rem;
-            color: #ffffff;
+            color: #0a0c12;
             transition: all 0.3s ease;
         }
         
         .floating-contact-link:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(118, 185, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(32, 255, 181, 0.5);
         }
         
         .floating-contact-link:hover i {
@@ -85,13 +85,13 @@
         
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(118, 185, 0, 0.4);
+                box-shadow: 0 0 0 0 rgba(32, 255, 181, 0.4);
             }
             70% {
-                box-shadow: 0 0 0 15px rgba(118, 185, 0, 0);
+                box-shadow: 0 0 0 15px rgba(32, 255, 181, 0);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(118, 185, 0, 0);
+                box-shadow: 0 0 0 0 rgba(32, 255, 181, 0);
             }
         }
         
