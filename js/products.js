@@ -1,4 +1,4 @@
-// ===== PRODUCTS CAROUSEL - CENTERED IMAGE LAYOUT =====
+// ===== PRODUCTS CAROUSEL - WITH NEXT PREVIEW (IMAGE + NAME) =====
 function initProductsCarousel() {
   const productPrev = document.getElementById('productPrev');
   const productNext = document.getElementById('productNext');
@@ -9,17 +9,12 @@ function initProductsCarousel() {
     {
       name: 'M60 BEAST',
       desc: 'Engineered to dominate · 8.8 L/min · Screw pump',
-      specs: [
-        { label: 'Flow Rate', value: '8.8 L/min' },
-        { label: 'Technology', value: 'Screw pump' },
-        { label: 'Circuits', value: '8 simultaneous' },
-        { label: 'Precision', value: '0.03 ml' }
-      ],
-      features: [
+      keyFeatures: [
         'Massive 8.8 L/min throughput',
         'Screw pump architecture',
         '8 simultaneous circuits',
-        'Industrial-grade durability'
+        'Industrial-grade durability',
+        '0.03 ml precision dosing'
       ],
       badge: 'NEW',
       image: 'images/products_section/M60.webp',
@@ -28,17 +23,12 @@ function initProductsCarousel() {
     {
       name: 'S45 Automatic',
       desc: 'Precision sequential dosing · 0.03ml · 0.30 L/min',
-      specs: [
-        { label: 'Flow Rate', value: '0.30 L/min' },
-        { label: 'Technology', value: 'Sequential' },
-        { label: 'Canisters', value: '16 cans' },
-        { label: 'Precision', value: '0.03 ml' }
-      ],
-      features: [
+      keyFeatures: [
         'Entry-level excellence',
         'Cluster stirring technology',
         '16 canister capacity',
-        'USB/Bluetooth connectivity'
+        'USB/Bluetooth connectivity',
+        '0.03 ml precision'
       ],
       badge: 'Entry Level',
       image: 'images/products_section/S45.webp',
@@ -47,17 +37,12 @@ function initProductsCarousel() {
     {
       name: 'M45 Automatic',
       desc: 'Higher throughput · 0.60 L/min · 111 kg',
-      specs: [
-        { label: 'Flow Rate', value: '0.60 L/min' },
-        { label: 'Technology', value: 'Sequential' },
-        { label: 'Canisters', value: '16 cans' },
-        { label: 'Weight', value: '111 kg' }
-      ],
-      features: [
+      keyFeatures: [
         'Mid-range powerhouse',
         '0.60 L/min flow rate',
-        'Higher throughput',
-        'Automatic stirring'
+        'Higher throughput capacity',
+        'Automatic stirring system',
+        '16 canister configuration'
       ],
       badge: 'Mid-Range',
       image: 'images/products_section/M45.webp',
@@ -66,17 +51,12 @@ function initProductsCarousel() {
     {
       name: 'M45-SM Simultaneous',
       desc: 'Parallel power · 4.8 L/min total · 8 circuits',
-      specs: [
-        { label: 'Total Flow', value: '4.8 L/min' },
-        { label: 'Technology', value: 'Simultaneous' },
-        { label: 'Circuits', value: '8 at once' },
-        { label: 'Certification', value: 'CE/SASO' }
-      ],
-      features: [
+      keyFeatures: [
         'Parallel dispensing power',
         '8 circuits simultaneously',
         '4.8 L/min total output',
-        'CE & SASO certified'
+        'CE & SASO certified',
+        'High-volume efficiency'
       ],
       badge: 'High Volume',
       image: 'images/products_section/M45-SM.webp',
@@ -85,17 +65,12 @@ function initProductsCarousel() {
     {
       name: 'TM Manual',
       desc: 'Precision simplified · 12/16/24 cans · Flexible scale',
-      specs: [
-        { label: 'Type', value: 'Manual' },
-        { label: 'Canisters', value: '12-24 cans' },
-        { label: 'Scale', value: 'Flexible' },
-        { label: 'Compatibility', value: 'Universal' }
-      ],
-      features: [
+      keyFeatures: [
         'Precision manual control',
-        'Multiple canister options',
+        'Multiple canister options (12-24)',
         'Flexible measurement units',
-        'Universal compatibility'
+        'Universal compatibility',
+        'Simple & reliable operation'
       ],
       badge: 'Manual',
       image: 'images/products_section/TM.webp',
@@ -112,10 +87,33 @@ function initProductsCarousel() {
   const productBadge = document.getElementById('productBadge');
   const productTitle = document.getElementById('productTitle');
   const productDesc = document.getElementById('productDesc');
-  const productSpecs = document.getElementById('productSpecs');
-  const featureList = document.getElementById('featureList');
+  const keyFeaturesList = document.getElementById('keyFeaturesList');
   const productLink = document.getElementById('productLink');
   const mainImage = document.getElementById('mainProductImage');
+  const nextPreviewImage = document.getElementById('nextPreviewImage');
+  const nextPreviewName = document.getElementById('nextPreviewName');
+  const nextPreviewDesc = document.getElementById('nextPreviewDesc');
+  const nextPreviewLink = document.getElementById('nextPreviewLink');
+  
+  // Get next product index
+  function getNextProductIndex() {
+    return (currentIndex + 1) % totalProducts;
+  }
+  
+  // Update next preview with image + name
+  function updateNextPreview() {
+    if (nextPreviewName && nextPreviewDesc && nextPreviewImage) {
+      const nextIndex = getNextProductIndex();
+      const nextProduct = products[nextIndex];
+      nextPreviewImage.src = nextProduct.image;
+      nextPreviewImage.alt = nextProduct.name;
+      nextPreviewName.textContent = nextProduct.name;
+      nextPreviewDesc.textContent = nextProduct.desc.split('·')[0].trim();
+      if (nextPreviewLink) {
+        nextPreviewLink.href = nextProduct.link;
+      }
+    }
+  }
   
   // Create dots
   function updateDots() {
@@ -140,14 +138,40 @@ function initProductsCarousel() {
     const product = products[index];
     currentIndex = index;
     
-    // Update badge
-    if (product.badge === 'NEW') {
-      productBadge.textContent = product.badge;
-      productBadge.style.background = 'var(--primary)';
-    } else {
-      productBadge.textContent = product.badge;
-      productBadge.style.background = 'var(--text-light)';
+  // Update explore button with product name
+  const exploreProductName = document.getElementById('exploreProductName');
+  if (exploreProductName) {
+    exploreProductName.textContent = product.name;
+  }
+
+   // Update mobile next preview
+  const mobileNextImage = document.getElementById('mobileNextImage');
+  const mobileNextName = document.getElementById('mobileNextName');
+  const mobileNextDesc = document.getElementById('mobileNextDesc');
+  const mobileNextBtn = document.getElementById('mobileNextBtn');
+  
+  if (mobileNextImage && mobileNextName && mobileNextDesc) {
+    const nextIndex = (index + 1) % products.length;
+    const nextProduct = products[nextIndex];
+    mobileNextImage.src = nextProduct.image;
+    mobileNextName.textContent = nextProduct.name;
+    mobileNextDesc.textContent = nextProduct.desc.split('·')[0].trim();
+    
+    // Add click event for mobile next button
+    if (mobileNextBtn) {
+      mobileNextBtn.onclick = () => {
+        stopAutoRotate();
+        updateProduct(nextIndex);
+        startAutoRotate();
+      };
     }
+  }
+  
+
+    // Update badge
+    productBadge.textContent = product.badge;
+    productBadge.style.background = '#20FFB5';
+    productBadge.style.color = '#0a0c12';
     
     // Update title with animation
     productTitle.style.animation = 'none';
@@ -161,22 +185,11 @@ function initProductsCarousel() {
     productDesc.style.animation = 'fadeInLeft 0.5s ease 0.1s';
     productDesc.textContent = product.desc;
     
-    // Update specs
-    productSpecs.style.animation = 'none';
-    productSpecs.offsetHeight;
-    productSpecs.style.animation = 'fadeInLeft 0.5s ease 0.2s';
-    productSpecs.innerHTML = product.specs.map(spec => `
-      <div class="spec-item">
-        <span class="spec-label">${spec.label}</span>
-        <span class="spec-value">${spec.value}</span>
-      </div>
-    `).join('');
-    
-    // Update features
-    featureList.style.animation = 'none';
-    featureList.offsetHeight;
-    featureList.style.animation = 'fadeInRight 0.5s ease 0.2s';
-    featureList.innerHTML = product.features.map(feature => `
+    // Update key features
+    keyFeaturesList.style.animation = 'none';
+    keyFeaturesList.offsetHeight;
+    keyFeaturesList.style.animation = 'fadeInLeft 0.5s ease 0.2s';
+    keyFeaturesList.innerHTML = product.keyFeatures.map(feature => `
       <li><i class="fas fa-check-circle"></i> ${feature}</li>
     `).join('');
     
@@ -190,15 +203,14 @@ function initProductsCarousel() {
     mainImage.src = product.image;
     mainImage.alt = product.name;
     
+    // Update next preview
+    updateNextPreview();
+    
     // Update active dot
     const dots = document.querySelectorAll('.showcase-dot');
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
-    
-    // Update navigation buttons state
-    if (productPrev) productPrev.disabled = currentIndex === 0;
-    if (productNext) productNext.disabled = currentIndex === totalProducts - 1;
   }
   
   function nextProduct() {
@@ -231,7 +243,17 @@ function initProductsCarousel() {
     }
   }
   
-  // Add event listeners
+  // Add event listeners for next preview click
+  if (nextPreviewLink) {
+    nextPreviewLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      stopAutoRotate();
+      nextProduct();
+      startAutoRotate();
+    });
+  }
+  
+  // Add event listeners for navigation buttons
   if (productPrev) productPrev.addEventListener('click', () => {
     stopAutoRotate();
     prevProduct();
@@ -256,6 +278,10 @@ function initProductsCarousel() {
   updateProduct(0);
   startAutoRotate();
 }
+
+
+
+
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {

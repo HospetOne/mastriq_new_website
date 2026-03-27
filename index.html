@@ -73,7 +73,8 @@
 </section>
 
 <!-- Products Section -->
-<!-- Products Section -->
+<!-- Products Section - Updated HTML with Next Preview (Image + Name) -->
+<!-- Products Section - Updated HTML -->
 <section class="products-section" id="products">
   <div class="container">
     <div class="section-header">
@@ -84,45 +85,80 @@
     
     <div class="product-showcase">
       <div class="product-showcase-container">
-        <!-- Navigation Arrows -->
         <button class="showcase-nav prev-btn" id="productPrev">
           <i class="fas fa-chevron-left"></i>
         </button>
         
-        <!-- Main Content Area -->
         <div class="product-showcase-content">
-          <!-- Left Side - Product Info & Specs -->
-          <div class="product-info-side" id="productInfoSide">
+          <!-- Left Side - Product Info -->
+          <div class="product-info-side">
             <div class="product-badge-container">
               <span class="product-badge-new" id="productBadge">NEW</span>
             </div>
             <h3 class="product-showcase-title" id="productTitle">M60 BEAST</h3>
             <p class="product-showcase-desc" id="productDesc">Engineered to dominate · 8.8 L/min · Screw pump</p>
             
-            <div class="product-showcase-specs" id="productSpecs">
-              <!-- Specs will be populated -->
+            <!-- Key Features Section -->
+            <div class="key-features-section">
+              <div class="key-features-title">
+                <i class="fas fa-star-of-life"></i>
+                <span>Key Features</span>
+              </div>
+              <ul class="key-features-list" id="keyFeaturesList"></ul>
             </div>
             
             <a href="#" class="product-showcase-link" id="productLink">
-              Explore Product <i class="fas fa-arrow-right"></i>
+              Explore <span id="exploreProductName">M60 BEAST</span> <i class="fas fa-arrow-right"></i>
             </a>
           </div>
           
           <!-- Center - Product Image -->
-          <div class="product-image-center" id="productImageCenter">
+          <div class="product-image-center">
             <div class="image-wrapper">
               <img id="mainProductImage" src="images/products_section/M60.webp" alt="M60 BEAST">
               <div class="image-glow"></div>
             </div>
           </div>
           
-          <!-- Right Side - Quick Stats & Features -->
-          <div class="product-stats-side" id="productStatsSide">
+          <!-- Right Side - Stats Card with NEXT PRODUCT PREVIEW -->
+          <div class="product-stats-side">
             <div class="stats-card">
-              <h4>Key Features</h4>
-              <ul class="feature-list" id="featureList">
-                <!-- Features will be populated -->
-              </ul>
+              <h4><i class="fas fa-crown"></i> Premium Quality</h4>
+              <p style="color: var(--text-gray); font-size: 0.85rem; line-height: 1.5;">
+                Engineered with precision and built to last. Our products undergo rigorous testing to ensure 
+                consistent performance and reliability in demanding environments.
+              </p>
+              
+              <!-- NEXT PRODUCT PREVIEW SECTION - Desktop Only -->
+              <div class="next-preview desktop-only" id="nextPreviewWrapper">
+                <a href="#" id="nextPreviewLink" class="next-preview-link" style="text-decoration: none; display: block;">
+                  <div class="next-preview-label">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Up Next</span>
+                  </div>
+                  <div class="next-product-content">
+                    <div class="next-product-image">
+                      <img id="nextPreviewImage" src="images/products_section/S45.webp" alt="Next Product">
+                    </div>
+                    <div class="next-product-info">
+                      <div class="next-product-name" id="nextPreviewName">S45 Automatic</div>
+                      <div class="next-product-desc" id="nextPreviewDesc">Precision sequential dosing</div>
+                    </div>
+                  </div>
+                  <div class="next-hint">
+                    <span>Click to preview next</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                </a>
+              </div>
+              
+              <!-- COMPARE ALL MODELS BUTTON - Below Next Preview -->
+              <div class="compare-wrapper">
+                <a href="comparison.html" class="compare-all-btn">
+                  <i class="fas fa-chart-bar"></i> Compare All Models
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -132,12 +168,35 @@
         </button>
       </div>
       
-      <!-- Carousel Dots -->
       <div class="showcase-dots" id="productDots"></div>
     </div>
     
-    <div class="view-all">
-      <a href="comparison.html" class="btn-secondary">Compare All Models <i class="fas fa-arrow-right"></i></a>
+    <!-- Mobile: Next Preview Section (Simplified) -->
+    <div class="mobile-next-preview" id="mobileNextPreview">
+      <div class="mobile-next-header">
+        <i class="fas fa-arrow-right"></i>
+        <span>Up Next</span>
+      </div>
+      <div class="mobile-next-content">
+        <div class="mobile-next-image">
+          <img id="mobileNextImage" src="images/products_section/S45.webp" alt="Next Product">
+        </div>
+        <div class="mobile-next-info">
+          <div class="mobile-next-name" id="mobileNextName">S45 Automatic</div>
+          <div class="mobile-next-desc" id="mobileNextDesc">Precision sequential dosing</div>
+        </div>
+        <button class="mobile-next-btn" id="mobileNextBtn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile: Compare All Models -->
+    <div class="mobile-compare-wrapper">
+      <a href="comparison.html" class="mobile-compare-btn">
+        <i class="fas fa-chart-bar"></i> Compare All Models
+        <i class="fas fa-arrow-right"></i>
+      </a>
     </div>
   </div>
 </section>
