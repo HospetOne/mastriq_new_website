@@ -55,6 +55,16 @@
   color: #20FFB5;
 }
 
+.section-title-New {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #130101;
+}
+
+.section-title-New .highlight {
+  color: #20FFB5;
+}
 .section-subtitle {
   font-size: 1.1rem;
   color: #9ca3af;
