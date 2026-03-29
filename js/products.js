@@ -284,64 +284,117 @@ function initProductsCarousel() {
 // ===== STRIPE-STYLE SQUEEZY CAROUSEL WITH IMAGES (FIXED) =====
 (function() {
   // Carousel Data with high-quality online images that load reliably
-  const carouselData = [
-    {
-      title: "Businesses on MastriqONE",
-      description: "Our platform processes millions of tinting operations annually with 99.99% uptime, enabling consistent colour accuracy across retail networks.",
-      link: "#",
-      linkText: "Read the story",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
-    },
-    {
-      title: "150K+ daily transactions",
-      description: "MastriqONE handles peak loads effortlessly, maintaining consistent performance during high-volume periods like seasonal promotions.",
-      link: "#",
-      linkText: "See the numbers",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&sat=-100"
-    },
-    {
-      title: "New: AI-Powered Color Matching",
-      description: "Our latest update introduces intelligent colour recommendations and automated formula adjustments for unprecedented accuracy.",
-      link: "#",
-      linkText: "Learn more",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop"
-    },
-    {
-      title: "Global Partner Network",
-      description: "MastriqONE now supports over 25 languages, enabling seamless deployment across international markets.",
-      link: "#",
-      linkText: "Read more",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop"
-    },
-    {
-      title: "Remote Diagnostics Launch",
-      description: "New remote troubleshooting tools reduce resolution time by 60%, minimizing downtime for your stores.",
-      link: "#",
-      linkText: "View announcement",
-      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=500&fit=crop"
-    },
-    {
-      title: "API Performance Upgrade",
-      description: "MastriqONE's API now handles 3x more requests per second, supporting higher throughput operations.",
-      link: "#",
-      linkText: "Get the data",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop"
-    },
-    {
-      title: "Integration with Leading POS",
-      description: "New partnerships bring seamless integration with top retail management systems worldwide.",
-      link: "#",
-      linkText: "Read more",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=500&fit=crop"
-    },
-    {
-      title: "Sustainability Report 2025",
-      description: "How digital tinting reduces waste by 85% compared to manual processes. Read our latest sustainability insights.",
-      link: "#",
-      linkText: "Get the report",
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=500&fit=crop"
-    }
-  ];
+
+const carouselData = [
+  {
+    title: "Formula Selection & Dispensing",
+    description: "Easily select shades, pack sizes and trigger dispensing. Customize formulas and save modified versions for future use.",
+    link: "#",
+    linkText: "Open dashboard",
+    image: "images/software_section/home.webp"
+  },
+  {
+    title: "Colorant Management System",
+    description: "Monitor canister levels, configure colorant associations, update RGB & SG values and set warning thresholds.",
+    link: "#",
+    linkText: "Manage colorants",
+    image: "images/software_section/colorant.webp"
+  },
+  {
+    title: "Advanced Calibration Tools",
+    description: "Perform precise point-wise calibration with custom inputs and visualize results using graphical charts.",
+    link: "#",
+    linkText: "Start calibration",
+    image: "images/software_section/calibration.webp"
+  },
+  {
+    title: "Machine Commands & Control",
+    description: "Access dispenser registers, configure machine parameters and test individual commands in real-time.",
+    link: "#",
+    linkText: "Configure machine",
+    image: "images/software_section/commands.webp"
+  },
+  {
+    title: "System Configuration Panel",
+    description: "Manage dispenser setup, colorant units, label printers and integrations like Flink from one place.",
+    link: "#",
+    linkText: "View settings",
+    image: "images/software_section/options.webp"
+  },
+  {
+    title: "Reports & Analytics Dashboard",
+    description: "Generate detailed reports by product, base or colorant. Export data to CSV/Excel with visual insights.",
+    link: "#",
+    linkText: "View reports",
+    image: "images/software_section/statistic.webp"
+  },
+  {
+    title: "User & Access Management",
+    description: "Create users, assign roles and control page-level permissions for secure system access.",
+    link: "#",
+    linkText: "Manage users",
+    image: "images/software_section/signup.webp"
+  }
+];
+
+  // const carouselData = [
+  //   {
+  //     title: "Businesses on MastriqONE",
+  //     description: "Our platform processes millions of tinting operations annually with 99.99% uptime, enabling consistent colour accuracy across retail networks.",
+  //     link: "#",
+  //     linkText: "Read the story",
+  //     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+  //   },
+  //   {
+  //     title: "150K+ daily transactions",
+  //     description: "MastriqONE handles peak loads effortlessly, maintaining consistent performance during high-volume periods like seasonal promotions.",
+  //     link: "#",
+  //     linkText: "See the numbers",
+  //     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&sat=-100"
+  //   },
+  //   {
+  //     title: "New: AI-Powered Color Matching",
+  //     description: "Our latest update introduces intelligent colour recommendations and automated formula adjustments for unprecedented accuracy.",
+  //     link: "#",
+  //     linkText: "Learn more",
+  //     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop"
+  //   },
+  //   {
+  //     title: "Global Partner Network",
+  //     description: "MastriqONE now supports over 25 languages, enabling seamless deployment across international markets.",
+  //     link: "#",
+  //     linkText: "Read more",
+  //     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop"
+  //   },
+  //   {
+  //     title: "Remote Diagnostics Launch",
+  //     description: "New remote troubleshooting tools reduce resolution time by 60%, minimizing downtime for your stores.",
+  //     link: "#",
+  //     linkText: "View announcement",
+  //     image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=500&fit=crop"
+  //   },
+  //   {
+  //     title: "API Performance Upgrade",
+  //     description: "MastriqONE's API now handles 3x more requests per second, supporting higher throughput operations.",
+  //     link: "#",
+  //     linkText: "Get the data",
+  //     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop"
+  //   },
+  //   {
+  //     title: "Integration with Leading POS",
+  //     description: "New partnerships bring seamless integration with top retail management systems worldwide.",
+  //     link: "#",
+  //     linkText: "Read more",
+  //     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=500&fit=crop"
+  //   },
+  //   {
+  //     title: "Sustainability Report 2025",
+  //     description: "How digital tinting reduces waste by 85% compared to manual processes. Read our latest sustainability insights.",
+  //     link: "#",
+  //     linkText: "Get the report",
+  //     image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=500&fit=crop"
+  //   }
+  // ];
 
   let currentIndex = 0;
   const totalItems = carouselData.length;
