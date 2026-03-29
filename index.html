@@ -292,41 +292,79 @@
 </div>
 
 
-<!-- Software Section -->
+<!-- Software Section - Stripe-Inspired Design -->
 <section class="software-section">
   <div class="container">
-    <div class="section-header centered">
+    <div class="section-header">
       <span class="section-badge">Software Intelligence</span>
       <h2 class="section-title">Precision Control.<br><span class="highlight">Seamless Integration.</span></h2>
       <p class="section-subtitle">MastriqONE - The future-ready ecosystem for paint retail management.</p>
     </div>
-    <div class="software-showcase">
-      <div class="software-screens">
-        <div class="screen-screen screen-left">
-          <img src="images/screens/1.png" class="active" alt="Dashboard">
-          <img src="images/screens/2.png" alt="Analytics">
-          <img src="images/screens/3.png" alt="Reports">
+
+   
+
+   
+
+    <!-- What's Happening Section - Stripe-style Squeezy Carousel -->
+  
+ <div class="carousel-controls" role="group" aria-label="Carousel navigation">
+          <button class="carousel-nav-btn prev" id="carouselPrev" aria-label="Previous slide">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M9.613 2.62L5.107 7.124h9.137v1.75H5.107l4.506 4.506-1.238 1.238-6-6L1.756 8l.619-.62 6-6 1.238 1.24z" fill="currentColor"/>
+            </svg>
+          </button>
+          <button class="carousel-nav-btn next" id="carouselNext" aria-label="Next slide">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6.387 2.62l4.506 4.505H1.756v1.75h9.137l-4.506 4.506 1.238 1.238 6-6L14.245 8l-.618-.62-6-6-1.239 1.24z" fill="currentColor"/>
+            </svg>
+          </button>
         </div>
-        <div class="software-center">
-          <img src="images/download.webp" alt="Mastriq System">
-        </div>
-        <div class="screen-screen screen-right">
-          <img src="images/screens/1.png" class="active" alt="Dashboard">
-          <img src="images/screens/2.png" alt="Analytics">
-          <img src="images/screens/3.png" alt="Reports">
-        </div>
+      <!-- Squeezy Carousel Container -->
+      <div class="squeezy-carousel">
+        <div class="squeezy-carousel__items-details-container" id="carouselItemsContainer"></div>
       </div>
-      <div class="software-features">
-        <div class="feature-grid">
-          <div class="feature-item"><i class="fas fa-chart-line"></i><h4>Real-time Analytics</h4><p>Monitor performance and data instantly</p></div>
-          <div class="feature-item"><i class="fas fa-cloud-upload-alt"></i><h4>Remote Updates</h4><p>Deploy updates with a single click</p></div>
-          <div class="feature-item"><i class="fas fa-shield-alt"></i><h4>Secure Access</h4><p>Enterprise-grade security protocols</p></div>
-          <div class="feature-item"><i class="fas fa-globe"></i><h4>Multi-platform</h4><p>Works across all your devices</p></div>
-        </div>
-      </div>
+      
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
-  </div>
+
+
+    
+
+    
 </section>
+
+
+ <!-- Video Showcase - Hero Style -->
+    <!-- <div class="software-hero">
+        <div class="whats-happening" >
+      <div class="section-header-inline">
+        <div>
+          <span class="section-badge-small">What's Happening</span>
+          <h3 class="section-subtitle-large">See the latest from MastriqONE.</h3>
+        </div>
+       
+      </div>
+      <div class="video-card">
+        <div class="video-wrapper">
+          <video id="softwareHeroVideo" poster="images/software/poster.jpg" preload="metadata">
+            <source src="videos/mastriqone-demo.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" id="heroPlayBtn">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="video-controls-bar" id="videoControls">
+            <button class="control-btn play-pause" id="playPauseBtn"><i class="fas fa-play"></i></button>
+            <div class="progress-container"><div class="progress-fill" id="progressFill"></div></div>
+            <span class="time-display" id="timeDisplay">0:00</span>
+            <button class="control-btn volume" id="volumeBtn"><i class="fas fa-volume-up"></i></button>
+            <button class="control-btn fullscreen" id="fullscreenBtn"><i class="fas fa-expand"></i></button>
+          </div>
+        </div>
+        <div class="video-caption">
+          <i class="fas fa-play-circle"></i> Watch MastriqONE in action
+        </div>
+      </div>
+    </div> -->
 
 <!-- Footer Component -->
 <div id="footer-container"></div>

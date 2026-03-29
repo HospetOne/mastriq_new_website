@@ -281,8 +281,297 @@ function initProductsCarousel() {
 
 
 
+// ===== STRIPE-STYLE SQUEEZY CAROUSEL WITH IMAGES (FIXED) =====
+(function() {
+  // Carousel Data with high-quality online images that load reliably
+  const carouselData = [
+    {
+      title: "Businesses on MastriqONE",
+      description: "Our platform processes millions of tinting operations annually with 99.99% uptime, enabling consistent colour accuracy across retail networks.",
+      link: "#",
+      linkText: "Read the story",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+    },
+    {
+      title: "150K+ daily transactions",
+      description: "MastriqONE handles peak loads effortlessly, maintaining consistent performance during high-volume periods like seasonal promotions.",
+      link: "#",
+      linkText: "See the numbers",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&sat=-100"
+    },
+    {
+      title: "New: AI-Powered Color Matching",
+      description: "Our latest update introduces intelligent colour recommendations and automated formula adjustments for unprecedented accuracy.",
+      link: "#",
+      linkText: "Learn more",
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop"
+    },
+    {
+      title: "Global Partner Network",
+      description: "MastriqONE now supports over 25 languages, enabling seamless deployment across international markets.",
+      link: "#",
+      linkText: "Read more",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop"
+    },
+    {
+      title: "Remote Diagnostics Launch",
+      description: "New remote troubleshooting tools reduce resolution time by 60%, minimizing downtime for your stores.",
+      link: "#",
+      linkText: "View announcement",
+      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=500&fit=crop"
+    },
+    {
+      title: "API Performance Upgrade",
+      description: "MastriqONE's API now handles 3x more requests per second, supporting higher throughput operations.",
+      link: "#",
+      linkText: "Get the data",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop"
+    },
+    {
+      title: "Integration with Leading POS",
+      description: "New partnerships bring seamless integration with top retail management systems worldwide.",
+      link: "#",
+      linkText: "Read more",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=500&fit=crop"
+    },
+    {
+      title: "Sustainability Report 2025",
+      description: "How digital tinting reduces waste by 85% compared to manual processes. Read our latest sustainability insights.",
+      link: "#",
+      linkText: "Get the report",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=500&fit=crop"
+    }
+  ];
 
+  let currentIndex = 0;
+  const totalItems = carouselData.length;
+  let itemsContainer;
+  let autoRotateInterval;
+  let isAnimating = false;
 
+  // Create a card element with image
+  function createCard(item, index) {
+    const card = document.createElement('div');
+    card.className = 'squeezy-carousel__item-card';
+    card.setAttribute('data-index', index);
+    
+    // Add placeholder fallback
+    const imgHtml = `
+      <div class="card-image">
+        <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.card-image-placeholder').style.display='flex';">
+        <div class="card-image-placeholder" style="display: none;">
+          <i class="fas fa-chart-line"></i>
+        </div>
+      </div>
+      <div class="card-title">${item.title}</div>
+      <div class="card-description">${item.description}</div>
+      <a href="${item.link}" class="card-link">
+        ${item.linkText} 
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M0.5 5.5h7M1.5 1.5l4 4-4 4" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </a>
+    `;
+    
+    card.innerHTML = imgHtml;
+    return card;
+  }
+
+  // Create carousel items
+  function createCarouselItems() {
+    if (!itemsContainer) return;
+    
+    itemsContainer.innerHTML = '';
+    
+    for (let i = 0; i < totalItems; i++) {
+      const itemWrapper = document.createElement('div');
+      itemWrapper.className = 'squeezy-carousel__item-details';
+      itemWrapper.setAttribute('data-index', i);
+      const card = createCard(carouselData[i], i);
+      itemWrapper.appendChild(card);
+      itemsContainer.appendChild(itemWrapper);
+    }
+  }
+
+  // Update carousel positions - Stripe style stacking
+  function updateCarousel() {
+    if (!itemsContainer) return;
+    
+    const items = itemsContainer.querySelectorAll('.squeezy-carousel__item-details');
+    const total = items.length;
+    const containerWidth = itemsContainer.parentElement?.offsetWidth || 1200;
+    const baseShift = Math.min(120, containerWidth * 0.1);
+    
+    for (let i = 0; i < total; i++) {
+      const item = items[i];
+      const index = parseInt(item.getAttribute('data-index'));
+      
+      // Calculate offset from current index (circular)
+      let offset = (index - currentIndex + total) % total;
+      if (offset > total / 2) offset = offset - total;
+      
+      // Calculate transform and opacity based on offset
+      let translateX, opacity, zIndex, scale;
+      
+      if (offset === 0) {
+        // Active item - full visibility
+        translateX = '0%';
+        opacity = 1;
+        zIndex = 20;
+        scale = 1;
+        item.style.pointerEvents = 'auto';
+      } else {
+        // Stacked items - decreasing visibility based on distance
+        const distance = Math.abs(offset);
+        // Each subsequent item is shifted more (decreasing shift for better visibility)
+        const shiftPercent = Math.min(60, distance * 18);
+        translateX = offset > 0 ? `${shiftPercent}%` : `-${shiftPercent}%`;
+        // Opacity decreases with distance
+        opacity = Math.max(0.2, 1 - (distance * 0.15));
+        zIndex = 10 - distance;
+        // Scale decreases slightly
+        scale = Math.max(0.75, 1 - (distance * 0.06));
+        item.style.pointerEvents = 'none';
+      }
+      
+      item.style.transform = `translateX(${translateX}) scale(${scale})`;
+      item.style.opacity = opacity;
+      item.style.zIndex = zIndex;
+    }
+    
+    // Update dots
+    const dots = document.querySelectorAll('.carousel-dot');
+    if (dots.length) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+  }
+
+  // Go to specific slide
+  function goToSlide(index) {
+    if (isAnimating) return;
+    if (index < 0) index = totalItems - 1;
+    if (index >= totalItems) index = 0;
+    if (index === currentIndex) return;
+    
+    isAnimating = true;
+    currentIndex = index;
+    updateCarousel();
+    
+    setTimeout(() => {
+      isAnimating = false;
+    }, 600);
+  }
+
+  // Next slide
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  // Previous slide
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  // Create dots
+  function createDots() {
+    const dotsContainer = document.getElementById('carouselDots');
+    if (!dotsContainer) return;
+    
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalItems; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+      dot.addEventListener('click', () => {
+        stopAutoRotate();
+        goToSlide(i);
+        startAutoRotate();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // Start auto rotation
+  function startAutoRotate() {
+    if (autoRotateInterval) clearInterval(autoRotateInterval);
+    autoRotateInterval = setInterval(() => {
+      if (!isAnimating) {
+        nextSlide();
+      }
+    }, 6000);
+  }
+
+  // Stop auto rotation
+  function stopAutoRotate() {
+    if (autoRotateInterval) {
+      clearInterval(autoRotateInterval);
+      autoRotateInterval = null;
+    }
+  }
+
+  // Handle window resize
+  let resizeTimeout;
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      updateCarousel();
+    }, 100);
+  }
+
+  // Initialize carousel
+  function initCarousel() {
+    itemsContainer = document.getElementById('carouselItemsContainer');
+    if (!itemsContainer) {
+      console.error('Carousel container not found');
+      return;
+    }
+    
+    createCarouselItems();
+    createDots();
+    updateCarousel();
+    startAutoRotate();
+    
+    // Event listeners for navigation buttons
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        stopAutoRotate();
+        prevSlide();
+        startAutoRotate();
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        stopAutoRotate();
+        nextSlide();
+        startAutoRotate();
+      });
+    }
+    
+    // Pause on hover
+    const carousel = document.querySelector('.squeezy-carousel');
+    if (carousel) {
+      carousel.addEventListener('mouseenter', stopAutoRotate);
+      carousel.addEventListener('mouseleave', startAutoRotate);
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', handleResize);
+    
+    console.log('Carousel initialized with', totalItems, 'items');
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+})();
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initProductsCarousel);

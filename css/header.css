@@ -63,12 +63,12 @@ s
 /* Eurostile Extended Font for mastriq brand - EXTRA BOLD */
 .brand {
   font-family: 'Eurostile Extended', 'Eurostile', 'Eurostile LT Std', 'Orbitron', 'Inter', sans-serif;
-  font-size: 1.6rem;        /* ← Slightly larger size */
-  font-weight: 500;          /* ← Max boldness */
+  font-size: 1.9rem;        /* ← Slightly larger size */
+  font-weight: 460;          /* ← Max boldness */
   color: #1a1a1a;
   text-decoration: none;
-  letter-spacing: 1px;       /* ← More spacing between letters */
-  line-height: 1.2;
+  letter-spacing: 2px;       /* ← More spacing between letters */
+  line-height: 0.9;
   text-transform: lowercase;  /* ← ALL CAPS for bolder appearance */
 }
 .brand-tagline {
