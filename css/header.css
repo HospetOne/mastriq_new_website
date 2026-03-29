@@ -73,7 +73,8 @@ s
 }
 .brand-tagline {
   font-size: 0.65rem;
-  color: #20FFB5;
+  margin-top: 2%;
+  color: #1a1a1a;
   letter-spacing: 0.5px;
   white-space: nowrap;
   font-weight: 500;
