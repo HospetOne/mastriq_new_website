@@ -10,46 +10,43 @@ function initProductsCarousel() {
       name: 'M60 BEAST',
       desc: 'Engineered to dominate · 8.8 L/min · Screw pump',
       keyFeatures: [
-        'Massive 8.8 L/min throughput',
-        'Screw pump architecture',
-        '8 simultaneous circuits',
-        'Industrial-grade durability',
-        '0.03 ml precision dosing'
+        'Min. Dosing - 0.03 ml',
+        'Flow Rate per circuit – 1.1 ltr/min',
+        'Simultaneous – 8.8 ltr/min (8 Circuits)  ',
+        'Canisters – 3.5 ltr / 6.5 ltr'
       ],
       badge: 'NEW',
       image: 'images/products_section/M60.webp',
       link: 'm60-beast.html'
     },
     {
-      name: 'S45 Automatic',
+      name: 'S45',
       desc: 'Precision sequential dosing · 0.03ml · 0.30 L/min',
       keyFeatures: [
-        'Entry-level excellence',
-        'Cluster stirring technology',
-        '16 canister capacity',
-        'USB/Bluetooth connectivity',
-        '0.03 ml precision'
+        'Min. Dosing - 0.03 ml',
+        'Sequential - 0.45 ltr/min',
+        'Simultaneous – 3.6 ltr/min (8 Circuits)',
+        'Canisters – 2.3 ltr'
       ],
       badge: 'Entry Level',
       image: 'images/products_section/S45.webp',
       link: 's45.html'
     },
     {
-      name: 'M45 Automatic',
+      name: 'M45',
       desc: 'Higher throughput · 0.60 L/min · 111 kg',
       keyFeatures: [
-        'Mid-range powerhouse',
-        '0.60 L/min flow rate',
-        'Higher throughput capacity',
-        'Automatic stirring system',
-        '16 canister configuration'
+        'Min. Dosing - 0.03 ml',
+        'Sequential - 0.6 ltr/min',
+        'Simultaneous – 4.8 ltr/min (8 Circuits)',
+        'Canisters – 2.3 ltr'
       ],
       badge: 'Mid-Range',
       image: 'images/products_section/M45.webp',
       link: 'm45.html'
     },
     {
-      name: 'M45-SM Simultaneous',
+      name: 'M45-SM',
       desc: 'Parallel power · 4.8 L/min total · 8 circuits',
       keyFeatures: [
         'Parallel dispensing power',
@@ -61,21 +58,22 @@ function initProductsCarousel() {
       badge: 'High Volume',
       image: 'images/products_section/M45-SM.webp',
       link: 'm45-sm.html'
-    },
-    {
-      name: 'TM Manual',
-      desc: 'Precision simplified · 12/16/24 cans · Flexible scale',
-      keyFeatures: [
-        'Precision manual control',
-        'Multiple canister options (12-24)',
-        'Flexible measurement units',
-        'Universal compatibility',
-        'Simple & reliable operation'
-      ],
-      badge: 'Manual',
-      image: 'images/products_section/TM.webp',
-      link: 'tm-manual.html'
     }
+    //,
+    // {
+    //   name: 'TM Manual',
+    //   desc: 'Precision simplified · 12/16/24 cans · Flexible scale',
+    //   keyFeatures: [
+    //     'Precision manual control',
+    //     'Multiple canister options (12-24)',
+    //     'Flexible measurement units',
+    //     'Universal compatibility',
+    //     'Simple & reliable operation'
+    //   ],
+    //   badge: 'Manual',
+    //   image: 'images/products_section/TM.webp',
+    //   link: 'tm-manual.html'
+    // }
   ];
   
   let currentIndex = 0;
@@ -169,9 +167,9 @@ function initProductsCarousel() {
   
 
     // Update badge
-    productBadge.textContent = product.badge;
-    productBadge.style.background = '#20FFB5';
-    productBadge.style.color = '#0a0c12';
+   productBadge.textContent = product.badge;
+   productBadge.style.background = '#20FFB5';
+   productBadge.style.color = '#0a0c12';
     
     // Update title with animation
     productTitle.style.animation = 'none';

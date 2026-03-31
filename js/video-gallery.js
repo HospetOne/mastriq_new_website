@@ -1,69 +1,65 @@
 // ===== VIDEO GALLERY FUNCTIONALITY =====
 function initVideoGallery() {
-  const videos = document.querySelectorAll('.video-wrapper');
+  const videoWrappers = document.querySelectorAll('.video-wrapper');
   const modal = document.getElementById('videoModal');
   const modalVideo = document.getElementById('modalVideo');
   const modalClose = document.getElementById('modalClose');
+  let hasAutoPlayed = false;
   
-  if (!videos.length) return;
+  if (!videoWrappers.length) return;
   
-  // Add click event to each video wrapper
-  videos.forEach(videoWrapper => {
-    const video = videoWrapper.querySelector('video');
-    const playOverlay = videoWrapper.querySelector('.video-play-overlay');
-    
-    if (!video) return;
-    
-    // Check if poster exists, if not set a fallback
-    if (video.hasAttribute('poster') && video.getAttribute('poster')) {
-      // Poster is set, ensure video displays it
-      video.load();
-    }
-    
-    // Play/pause on click
-    videoWrapper.addEventListener('click', (e) => {
-      e.stopPropagation();
-      
-      // If clicking on play overlay or video itself, play the video
-      if (video.paused) {
-        // Pause any other playing videos first
-        document.querySelectorAll('.video-wrapper video').forEach(otherVideo => {
-          if (otherVideo !== video && !otherVideo.paused) {
-            otherVideo.pause();
-            const otherWrapper = otherVideo.closest('.video-wrapper');
-            if (otherWrapper) otherWrapper.classList.remove('playing');
-          }
-        });
-        
-        video.play();
-        videoWrapper.classList.add('playing');
-      } else {
-        video.pause();
-        videoWrapper.classList.remove('playing');
+  // Function to play video
+  function playVideo(video, wrapper) {
+    // Pause all other videos first
+    document.querySelectorAll('.video-wrapper video').forEach(otherVideo => {
+      if (otherVideo !== video && !otherVideo.paused) {
+        otherVideo.pause();
+        const otherWrapper = otherVideo.closest('.video-wrapper');
+        if (otherWrapper) otherWrapper.classList.remove('playing');
       }
     });
     
-    // Show overlay when video ends
-    video.addEventListener('ended', () => {
-      videoWrapper.classList.remove('playing');
-    });
-    
-    // Remove playing class when video is paused
-    video.addEventListener('pause', () => {
-      videoWrapper.classList.remove('playing');
-    });
-    
-    // Add playing class when video starts playing
-    video.addEventListener('play', () => {
-      videoWrapper.classList.add('playing');
-    });
-  });
+    video.play();
+    wrapper.classList.add('playing');
+  }
   
-  // Modal functionality for fullscreen view
-  if (modal && modalVideo) {
-    // Double click on video to open modal
-    document.querySelectorAll('.video-wrapper video').forEach(video => {
-      video.addEventListener('dblclick', (e) => {
+  // Function to pause video
+  function pauseVideo(video, wrapper) {
+    video.pause();
+    wrapper.classList.remove('playing');
+  }
+  
+  // Setup each video
+  videoWrappers.forEach(wrapper => {
+    const video = wrapper.querySelector('video');
+    const playOverlay = wrapper.querySelector('.video-play-overlay');
+    const enlargeBtn = wrapper.querySelector('.video-enlarge-btn');
+    
+    if (!video) return;
+    
+    // Set muted to allow autoplay
+    video.muted = true;
+    
+    // Load poster
+    if (video.hasAttribute('poster') && video.getAttribute('poster')) {
+      video.load();
+    }
+    
+    // Play/Pause on overlay click
+    if (playOverlay) {
+      playOverlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.paused) {
+          playVideo(video, wrapper);
+        } else {
+          pauseVideo(video, wrapper);
+        }
+      });
+    }
+    
+    // Enlarge button click - open modal
+    if (enlargeBtn) {
+      enlargeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const videoSrc = video.currentSrc || video.src;
         modalVideo.src = videoSrc;
@@ -71,12 +67,57 @@ function initVideoGallery() {
         modalVideo.play();
         
         // Pause the original video
-        video.pause();
-        const wrapper = video.closest('.video-wrapper');
-        if (wrapper) wrapper.classList.remove('playing');
+        pauseVideo(video, wrapper);
       });
+    }
+    
+    // Video event listeners
+    video.addEventListener('ended', () => {
+      wrapper.classList.remove('playing');
     });
     
+    video.addEventListener('pause', () => {
+      wrapper.classList.remove('playing');
+    });
+    
+    video.addEventListener('play', () => {
+      wrapper.classList.add('playing');
+    });
+  });
+  
+  // Intersection Observer for autoplay when section comes into view
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAutoPlayed) {
+        hasAutoPlayed = true;
+        
+        // Play all videos muted when section comes into view
+        videoWrappers.forEach(wrapper => {
+          const video = wrapper.querySelector('video');
+          if (video && video.paused) {
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+            wrapper.classList.add('playing');
+          }
+        });
+        
+        // Stop observing after autoplay
+        observer.disconnect();
+      }
+    });
+  }, observerOptions);
+  
+  const gallerySection = document.querySelector('.video-gallery-section');
+  if (gallerySection) {
+    observer.observe(gallerySection);
+  }
+  
+  // Modal functionality
+  if (modal && modalVideo) {
     // Close modal
     if (modalClose) {
       modalClose.addEventListener('click', () => {
@@ -104,6 +145,22 @@ function initVideoGallery() {
       }
     });
   }
+  
+  // Optional: Pause videos when they go out of view
+  const pauseObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const wrapper = entry.target.closest('.video-wrapper');
+      const video = wrapper?.querySelector('video');
+      
+      if (!entry.isIntersecting && video && !video.paused) {
+        pauseVideo(video, wrapper);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  videoWrappers.forEach(wrapper => {
+    pauseObserver.observe(wrapper);
+  });
 }
 
 // Initialize when DOM is ready

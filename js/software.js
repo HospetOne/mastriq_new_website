@@ -164,7 +164,7 @@ function initSoftwareSection() {
 }
 // ===== STRIPE-STYLE SQUEEZY CAROUSEL WITH REAL IMAGES (FIXED) =====
 (function() {
-  // Carousel Data with ACTUAL IMAGE URLs
+  //Carousel Data with ACTUAL IMAGE URLs
   const carouselData = [
   {
     title: "Formula Selection & Dispensing",

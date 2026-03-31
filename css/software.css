@@ -1,6 +1,6 @@
 /* ===== SOFTWARE SECTION - STRIPE INSPIRED ===== */
 .software-section {
-  padding: 5rem 0;
+  padding: 1rem 0;
   background: linear-gradient(135deg, #000000, #000000);
   position: relative;
   overflow: hidden;
@@ -25,7 +25,7 @@
 /* Section Header */
 .section-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .section-badge {
@@ -58,7 +58,7 @@
 .section-title-New {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: #130101;
 }
 
@@ -288,7 +288,10 @@
 
 .carousel-controls {
   display: flex;
-  gap: 0.5rem;
+  justify-content: center;   /* 🔥 center horizontally */
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 .carousel-nav-btn {
@@ -312,15 +315,28 @@
 }
 
 /* Squeezy Carousel */
-.squeezy-carousel {
+/* .squeezy-carousel {
   position: relative;
   overflow: visible;
   width: 100%;
   min-height: 480px;
   margin: 0 auto;
    pointer-events: none;
+} */
+.squeezy-carousel {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  min-height: 540px;   /* 🔥 increased from 480 */
+  margin: 0 auto;
+  /* pointer-events: none; */
+   pointer-events: auto;   /* 🔥 allow buttons to work */
 }
-
+.squeezy-carousel__item-card:hover {
+  transform: translateY(-6px) scale(1.03); /* 🔥 zoom added */
+  border-color: #20FFB5;
+  box-shadow: 0 35px 70px -20px rgba(32, 255, 181, 0.3);
+}
 .squeezy-carousel__items-details-container {
   position: relative;
   /* width: 100%; */
@@ -367,13 +383,13 @@
 }
 
 .squeezy-carousel__item-card {
-  width: 85%;
-  max-width: 520px;
+  width: 90%;
+  max-width: 580px;
   /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   backdrop-filter: blur(12px); */
     background: #0f1117;              /* 🔥 solid dark */
   border-radius: 28px;
-  padding: 1.5rem;
+  padding: 1.8rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
   box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.4);
@@ -579,4 +595,11 @@
   .card-image {
     height: 140px;
   }
+}
+.centered-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0rem;
 }
